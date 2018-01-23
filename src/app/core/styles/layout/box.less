@@ -1,0 +1,168 @@
+@box-bg: #FFF;
+@box-border-radius: 5px;
+@box-border: @sym-grey-border;
+@box-box-shadow: 0px 1px 3px 0px @sym-box-shadow;
+
+@box-form-label-secondary: #333333;
+
+@box-input-width: 360px;
+@box-input-focus-border: @sym-blue-link;
+@box-form-btn-group-border: @sym-grey-border;
+
+.box{
+  background-color: @panel-bg;
+  border: 1px solid @box-border;
+  border-radius: @box-border-radius;
+  padding: 20px;
+  margin-bottom: 15px;
+
+  .box-shadow(@box-box-shadow);
+
+  .box-heading{
+    padding: 15px;
+    > div{
+      padding-left: 0;
+    }
+  }
+
+  .table-heading{
+    margin-bottom: 15px;
+  }
+
+  .table-options{
+    padding: 10px 15px;
+    input[type='text']{
+      width: 360px;
+    }
+  }
+
+  .admin-kpi-box{
+    border-top: 0;
+  }
+
+  .form-group.form-group-secondary{
+    > label{
+      color: @box-form-label-secondary;
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .btn-group-form{
+    display: block;
+
+    .btn{
+      width: 160px;
+    }
+
+    label.btn input[type="radio"]{
+      display: none;
+    }
+  }
+
+  .help-block{
+    font-size: 13px;
+    font-weight: normal;
+  }
+
+  > .box-table{
+
+    &:first-child .thead .tr .td{
+      border-top: 0;
+
+      &:first-child{
+        border-left: 0;
+        border-top-left-radius: 3px;
+      }
+
+      &:last-child{
+        border-left: 0;
+        border-top-right-radius: 3px;
+      }
+    }
+  }
+
+  .box-form-fluid{
+    .form-group{
+      input[type='text'],
+      input[type="password"],
+      input[type="datetime"],
+      input[type="datetime-local"],
+      input[type="date"],
+      input[type="month"],
+      input[type="time"],
+      input[type="week"],
+      input[type="number"],
+      input[type="email"],
+      input[type="url"],
+      input[type="search"],
+      input[type="tel"],
+      input[type="color"]{
+        width: 100%;
+      }
+    }
+  }
+
+  .form-group{
+    input[type='text'],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="color"]{
+      width: 360px;
+    }
+
+    .input-group{
+      width: 360px;
+
+      input[type='text'],
+      input[type="password"],
+      input[type="datetime"],
+      input[type="datetime-local"],
+      input[type="date"],
+      input[type="month"],
+      input[type="time"],
+      input[type="week"],
+      input[type="number"],
+      input[type="email"],
+      input[type="url"],
+      input[type="search"],
+      input[type="tel"],
+      input[type="color"]{
+        width: 360px;
+      }
+    }
+  }
+
+  .box-footer{
+    padding: 15px;
+  }
+
+  .box-table + .box-footer{
+    border-top: 1px solid @box-border;
+  }
+
+  .box-title{
+    margin-bottom: 34px;
+    font-size: 31px;
+    color: #726C6F;
+    letter-spacing: 0.96px;
+    font-weight: 100;
+    text-align: center;
+  }
+
+}
+
+.box.table-box{
+  padding: 0;
+}

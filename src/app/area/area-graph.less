@@ -1,0 +1,46 @@
+
+.area-graph{
+  display: block;
+  position: relative;
+  overflow: visible;
+  line-height: 0;
+
+  .grid path{
+    stroke-width: 0;
+  }
+
+  .grid line{
+    stroke: #333f5d;
+    opacity: 0.5;
+  }
+
+  .axis text{
+    fill: #666666;
+    cursor: default;
+    font-size: 14px;
+  }
+
+  .axis path{
+    fill: none;
+    stroke: #AAA;
+    shape-rendering: crispEdges;
+  }
+
+  .y.axis{
+
+    text{
+      color: #c6c6c6;
+    }
+
+    line{
+      stroke: #DBE0E9;
+      stroke-width: 1px;
+      shape-rendering: crispEdges;
+    }
+
+    > .domain{
+      stroke: none;
+    }
+  }
+
+}

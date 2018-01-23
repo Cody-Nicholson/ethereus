@@ -1,0 +1,15 @@
+<div class="ob-breadcrumb-group">
+  <ol class="ob-breadcrumb">
+    
+    <li *ngFor="let item of breadcrumbs">
+      <a *ngIf="item.link"
+         [routerLink]="item.link">
+        {{item.name}}
+      </a>
+      <a *ngIf="!item.link">
+        {{item.name}}
+      </a>
+    </li>
+  
+  </ol>
+</div>

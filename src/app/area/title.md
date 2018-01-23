@@ -1,0 +1,1 @@
+An Area Chart with a variety of add-ons via Directives

@@ -1,0 +1,160 @@
+@btn-font-weight: normal;
+
+@btn-default-color: #726C6F;
+@btn-default-bg: transparent;
+@btn-default-border: #958D91;
+@btn-default-hover-bg: #EEEEEE;
+
+@btn-primary-color: #FFF;
+@btn-primary-bg: #2C6F90;
+@btn-primary-border: #2C6F90;
+@btn-primary-active-color: #FFF;
+@btn-primary-hover-bg: #023957;
+
+@btn-info-color:                 #fff;
+@btn-info-bg:                    @brand-info;
+@btn-info-border:                darken(@btn-info-bg, 5%);
+
+@btn-action-color: @sym-grey;
+@btn-action-bg: #FFF;
+@btn-action-border: @sym-grey-border;
+
+@btn-console-color: #FFF;
+@btn-console-bg: #332208;
+@btn-console-border: #FFF;
+
+@btn-padding-vertical: 5px;
+@btn-padding-horizontal: 10px;
+@btn-border-radius: 2px;
+
+.btn{
+
+  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
+  letter-spacing: 0.43px;
+
+  &,
+  &:active,
+  &.active{
+    &:focus,
+    &.focus{
+      outline: none;
+      outline: 0;
+      outline-offset: 0;
+    }
+  }
+
+  &:active,
+  &.active{
+    outline: 0;
+    background-image: none;
+    box-shadow: none;
+  }
+}
+
+// Alternate buttons
+// --------------------------------------------------
+
+.btn-default{
+  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+}
+
+.btn-primary{
+  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+}
+
+.btn-action{
+  .button-variant(@btn-action-color; @btn-action-bg; @btn-action-border);
+  border-width: 2px;
+  padding: 2px 10px;
+}
+
+.btn-console{
+  .button-variant(@btn-console-color; @btn-console-bg; @btn-console-border);
+}
+
+.btn-info {
+  .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+}
+
+.btn-primary{
+
+  &:focus,
+  &.focus,
+  &:hover{
+    color: @btn-primary-color;
+    background-color: @btn-primary-hover-bg;
+    border-color: @btn-primary-hover-bg;
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle&{
+    color: @btn-primary-color;
+    background-color: @btn-primary-bg;
+    border-color: @btn-primary-bg;
+
+    &:hover,
+    &:focus,
+    &.focus{
+      color: @btn-primary-color;
+      background-color: @btn-primary-hover-bg;
+      border-color: @btn-primary-hover-bg;
+    }
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    color: @sym-disabled-color;
+    background-color: @sym-disabled-bg;
+    border: 1px solid @sym-disabled-bg;
+
+    &:hover,
+    &:focus,
+    &.focus{
+      color: @sym-disabled-color;
+      background-color: @sym-disabled-bg;
+      border: 1px solid @sym-disabled-bg;
+    }
+  }
+
+}
+
+.btn-default{
+  &:focus,
+  &.focus,
+  &:hover{
+    color: @btn-default-color;
+    background-color: @btn-default-hover-bg;
+    border-color: @btn-default-color;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    color: @sym-disabled-color;
+    background-color: @sym-disabled-bg;
+    border: 1px solid @sym-disabled-bg;
+
+    &:hover,
+    &:focus,
+    &.focus{
+      color: @sym-disabled-color;
+      background-color: @sym-disabled-bg;
+      border: 1px solid @sym-disabled-bg;
+    }
+  }
+}
+
+.btn-xs{
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+// Button Sizes
+// --------------------------------------------------
+
+.btn-icon{
+  padding: 2px 6px;
+}

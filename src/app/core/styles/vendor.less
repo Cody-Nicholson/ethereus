@@ -1,0 +1,67 @@
+//@import "./fontawesome/font-awesome";
+
+@fa-font-path: "../fonts";
+
+.fa-caret-combo{
+  position: relative;
+  top: -4px;
+
+  > span{
+    position: absolute;
+    left: 0px;
+    top: 7px;
+  }
+}
+
+/* Hacky CSS for a hacky plugin (sorry anyone who has to deal with this) */
+.intl-tel-input {
+
+  input {
+    padding-left: 64px !important; //yep
+  }
+
+  input + .after-input{
+    display: block;
+    border-right: solid 1px #CCC;
+    height: 100%;
+    position: absolute;
+    left: 57px;
+    width: 1px;
+    top: 0;
+  }
+
+  input:focus + .after-input{
+    border-right: 2px solid #5060A3;
+  }
+
+  .flag-container{
+
+    .selected-flag{
+      width: 55px;
+      
+      &:focus{
+        outline: 0;
+      }
+
+      .flag-dropdown-icon{
+        color: #565154; // @sym-grey
+        position: absolute;
+        top: 0;
+        right: -3px;
+        display: block;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.has-error .intl-tel-input{
+
+  input + .after-input,
+  input:focus + .after-input{
+    border-right: 2px solid #BE3655;
+  }
+}

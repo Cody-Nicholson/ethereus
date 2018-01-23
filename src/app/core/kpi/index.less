@@ -1,0 +1,110 @@
+@import "queue-bars";
+
+.kpi-box{
+  position: relative;
+  border-radius: 0;
+  border-top: solid 1px #DDD;
+  border-bottom: solid 1px #DDD;
+  line-height: 1;
+  white-space: nowrap;
+  font-weight: 700;
+  font-family: Arimo, Helvetica, Arial, sans-serif;
+
+  kpi-cell{
+    display: block;
+  }
+
+  .kpi-box-title{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #959595;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    content: "Example";
+  }
+
+  .kpi-row{
+    display: table;
+    min-width: 100%;
+
+    .value{
+      font-size: 55px;
+    }
+
+    label{
+      font-size: 14px;
+      font-weight: normal;
+      padding: 0;
+      margin-top: 5px;
+      display: block;
+      text-align: left;
+      color: #AAA;
+    }
+
+    > div, kpi-cell{
+      padding-bottom: 30px;
+      padding-top: 30px;
+      min-height: 141px;
+    }
+
+    .kpi-chart{
+      padding: 0;
+    }
+
+    > .kpi-chart label{
+      color: black;
+      position: absolute;
+    }
+
+    > .graph-box{
+      padding: 10px 5px;
+    }
+
+    > div:nth-child(n+2),
+    > kpi-cell:nth-child(n+2){
+      border-left: 1px solid #DDD;
+    }
+
+    .center-box {
+      margin: 0 auto;
+      display: table;
+    }
+
+  }
+
+  .kpi-row + .kpi-row{
+    border-top: 1px solid #DDD;
+  }
+
+  .legend-box{
+    .legend-color{
+      display: inline-block;
+      height: 22px;
+      width: 10px;
+      border-radius: 15px;
+      vertical-align: middle;
+    }
+
+    .legend-value{
+      font-size: 44px;
+      height: 55px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 20px;
+
+    }
+  }
+
+}
+
+.kpi-graphs > div{
+  display: inline-block;
+  border: 0px solid #DDD;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  margin-right: -1px;
+}
+

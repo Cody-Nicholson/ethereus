@@ -1,0 +1,82 @@
+<nav class="navbar navbar-fixed-top navbar-inverse"
+     role="navigation">
+  
+  <div class="container">
+    
+    <div class="navbar-header">
+      <a class="navbar-brand"
+         href="/">
+        Etherious
+      </a>
+    </div>
+    
+    <div class="collapse navbar-collapse nav-collapse">
+      <ul class="nav navbar-nav">
+        
+        
+        <li routerLinkActive="active">
+          <a [routerLink]="['/energy']">
+            Energy
+          </a>
+        </li>
+  
+        <li routerLinkActive="active">
+          <a [routerLink]="['/hashrate']">
+            Hashrates
+          </a>
+        </li>
+        
+        <li routerLinkActive="active">
+          <a [routerLink]="['/temperatures']">
+            Temperatures
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a [routerLink]="['/fans']">
+            Fans
+          </a>
+        </li>
+        
+        <!-- <li class="dropdown"
+            dropdown>
+          <a dropdownToggle
+             class="dropdown-toggle">
+            Tools
+            <b class="caret"></b>
+          </a>
+          
+          <ul *dropdownMenu
+              class="dropdown-menu">
+            <li>
+              <a [routerLink]="['/admin-users']">
+                Admin Users
+              </a>
+            </li>
+            
+            <li>
+              <a [routerLink]="['/audit-log']">
+                Audit Log
+              </a>
+            </li>
+  
+            <li>
+              <a [routerLink]="['/manage/users']">
+                User Overview
+              </a>
+            </li>
+  
+            <li>
+              <a [routerLink]="['/dashboard']">
+                Platform Overview
+              </a>
+            </li>
+            
+          </ul>
+        </li> -->
+        
+      </ul>
+    </div>
+  </div>
+
+</nav>

@@ -1,0 +1,118 @@
+@form-color: #726C6F;
+
+.form-control{
+  padding: 7px 10px;
+  font-size: 13px;
+  height: 32px;
+  border-color: @sym-grey-border;
+  color: @form-color;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  .box-shadow(none);
+
+  &:focus,
+  &:hover{
+    border: 2px solid @sym-blue;
+    padding: 6px 9px;
+    outline: 0;
+    .box-shadow(none);
+
+    + .input-group-addon{
+      margin-left: -2px;
+    }
+  }
+
+  &:focus + .input-group-addon,
+  &:hover + .input-group-addon{
+    border: 2px solid #2C6F90;
+    border-left: 0;
+  }
+}
+
+/*.input-group-addon{
+  background-color: #2C6F90;
+  color: #FFF;
+  border: 1px solid @sym-grey-border;
+}*/
+
+.input-group.input-group-lg{
+  > .form-control{
+    font-size: 19px;
+    padding: 7px 15px;
+    height: 43px;
+  }
+
+  > .form-control:hover,
+  > .form-control:focus{
+    padding: 7px 14px;
+  }
+
+  > .form-control:focus + .input-group-addon,
+  > .form-control:hover + .input-group-addon{
+    padding: 4px 8px;
+  }
+
+  .input-group-addon{
+    font-size: 23px;
+    height: 43px;
+    padding: 5px 9px;
+  }
+}
+
+.form-control.form-control-number{
+  width: 50px;
+  display: inline-block;
+
+}
+
+.form-group{
+  margin-bottom: 25px;
+
+  > label{
+    font-size: 13.7px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    color: @form-color;
+  }
+
+  ::-moz-placeholder{
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.4px;
+    color: @form-color;
+    opacity: 1;
+  }
+
+  :-ms-input-placeholder{
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.4px;
+    color: @form-color;
+  }
+
+  ::-webkit-input-placeholder{
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.4px;
+    color: @form-color;
+  }
+}
+
+textarea{
+  resize: none;
+}
+
+.has-error{
+  .form-control{
+    color: @sym-grey;
+    border-width: 2px;
+    padding: 6px 9px;
+    .box-shadow(none);
+
+    &:hover,
+    &:focus{
+      border-color: #BE3655;
+      .box-shadow(none);
+    }
+  }
+}

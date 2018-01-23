@@ -1,0 +1,33 @@
+<div class="area-legend"
+     [ngClass]="direction"
+     [style.opacity]="visible ? 1: 0"
+     [style.width]="width + 'px'"
+     [style.transform]="transform">
+  
+  <div class="arrow-container"
+       [ngClass]="arrowLocation">
+    <div class="arrow-shadowed"></div>
+  </div>
+  
+  <div class="legend-body">
+    <div class="legend-body-title">
+      {{xValue | date:'h:mm a EEE, MMM d, yyyy'}}
+    </div>
+    
+    <div class="legend-item"
+         *ngFor="let item of items">
+      <span class="legend-item-color"
+            [ngStyle]="{
+              'background-color': item.color,
+              'border-color': item.borderColor
+            }">
+      </span>
+      
+      {{item.label}}
+      <span class="legend-value">
+        {{item.value}}
+      </span>
+    </div>
+  </div>
+
+</div>
