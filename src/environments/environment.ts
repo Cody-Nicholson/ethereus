@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  smartPowerApi: 'http://localhost:3006',
+  ethereusApi: 'http://localhost:3005',
   claymoreApi: 'http://localhost:3005',
 };

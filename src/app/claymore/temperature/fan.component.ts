@@ -65,7 +65,7 @@ export class FanComponent implements OnInit {
   }
 
   pollFans() {
-    return Observable.interval(1000)
+    return Observable.interval(10000)
       .mergeMap(i => {
         return this.claymore.getTemperatures()
       })

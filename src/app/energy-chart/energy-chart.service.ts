@@ -10,7 +10,7 @@ import { environment } from "../../environments/environment";
 export class EnergyService extends HttpJsonService{
 
     get baseApi(): string{
-        return `${environment.smartPowerApi}`;
+        return `${environment.ethereusApi}`;
     }
     
     constructor(protected http: Http) {

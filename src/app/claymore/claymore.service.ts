@@ -19,7 +19,7 @@ export class ClaymoreService extends HttpJsonService {
     }
 
     get(): Observable<ClaymoreData> {
-        return this.http.get(`${this.baseApi}/stats`)
+        return this.http.get(`${this.baseApi}/stats/z`)
             .map(this.extractData)
             .catch(this.handleError);
     }
