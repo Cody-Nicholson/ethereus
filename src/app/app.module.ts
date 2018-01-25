@@ -19,6 +19,8 @@ import { TempAxisDirective } from './claymore/temperature/temp-axis.directive';
 import { FanComponent } from './claymore/temperature/fan.component';
 import { FanChartComponent } from './claymore/temperature/fan-chart.component';
 import { KpiCellModule } from "./core/kpi/kpi-cell.module";
+import { EthHashComponent } from './claymore/eth-hash/eth-hash.component';
+import { EthHashChartComponent } from './claymore/eth-hash/eth-hash-chart.component';
 
 @NgModule({
   imports: [
@@ -40,7 +42,9 @@ import { KpiCellModule } from "./core/kpi/kpi-cell.module";
     TemperatureComponent,
     TempAxisDirective,
     FanComponent,
-    FanChartComponent
+    FanChartComponent,
+    EthHashComponent,
+    EthHashChartComponent
   ],
   providers: [
     EnergyService,

@@ -14,45 +14,33 @@ export class TemperatureComponent implements OnInit {
   @Input() data;
 
   areaData: any;
-  areaConfig: any;
   poll: Subscription;
+  kpiMin: number = Infinity;
+  kpiMax: number = 0;
+  kpiAvg: number;
 
   constructor(public claymore: ClaymoreService) {
   }
 
   ngOnInit() {
-    this.poll = this.pollTemperatures()
-      .subscribe(temps => {
-
-        if(!this.areaData){
-          this.areaData = temps.map(h => [])
-        }
-
-        temps.forEach((temp, i) => {
-          let point: any = {
-            x: +(new Date()) - 3600000,
-            y: temp
-          };
-
-          this.areaData[i].push(point);
-          if (this.areaData[i].length > 200) {
-            this.areaData[i].shift()
-          }
-        });
-        this.areaData = this.areaData.concat()
-      });
+    this.claymore.getTemperatureSeries()
+      .subscribe((data: number[][]) => {
+        this.areaData = ClaymoreService.getPoints('10M', data);
+        this.kpiMin = ClaymoreService.getMin(data);
+        this.kpiMax = ClaymoreService.getMax(data);
+        this.kpiAvg = ClaymoreService.getAverage(data);
+      })
   }
 
-  pollTemperatures() {
-    return Observable.interval(1000)
+  pollFans() {
+    return Observable.interval(5000)
       .mergeMap(i => {
-        return this.claymore.getTemperatures()
+        return this.claymore.getTemperatureSeries()
       })
   }
 
   ngOnDestroy() {
-    this.poll.unsubscribe();
+    //this.poll.unsubscribe();
   }
-
 
 }

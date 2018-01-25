@@ -4,21 +4,21 @@
       <div class="kpi-row">
         <kpi-cell class="col-lg-4"
                   label="1 Hour Low"
-                  [value]="(kpiMin | number) + '%'">
+                  [value]="(kpiMin/1000 | number:'0.1-1') + ' Mh/s'">
         </kpi-cell>
 
         <kpi-cell class="col-lg-4"
                   label="1 Hour High" 
-                  [value]="(kpiMax | number) + '%'">
+                  [value]="(kpiMax/1000 | number:'0.1-1') + ' Mh/s'">
         </kpi-cell>
 
         <kpi-cell class="col-lg-4" 
                   label="1 Hour Avg" 
-                  [value]="(kpiAvg | number:'0.0-0') + '%'">>
+                  [value]="(kpiAvg/1000 | number:'0.1-1') + ' Mh/s' ">>
         </kpi-cell>
       </div>
 
     </div>
-    <eth-fan-chart [data]="areaData"></eth-fan-chart>
+    <eth-hash-chart [data]="areaData"></eth-hash-chart>
   </div>
 </div>

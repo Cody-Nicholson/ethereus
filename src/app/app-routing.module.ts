@@ -4,6 +4,7 @@ import { EnergyChartComponent } from './energy-chart/energy-chart.component';
 import { HashrateComponent } from './claymore/hashrate/hashrate.component';
 import { TemperatureComponent } from './claymore/temperature/temperature.component';
 import { FanComponent } from './claymore/temperature/fan.component';
+import { EthHashComponent } from './claymore/eth-hash/eth-hash.component';
 
 
 const appRoutes: Routes = [
@@ -12,8 +13,8 @@ const appRoutes: Routes = [
     component: EnergyChartComponent
   },
   {
-    path: 'hashrate',
-    component: HashrateComponent
+    path: 'eth-hashrate',
+    component: EthHashComponent
   },
   {
     path: 'temperatures',

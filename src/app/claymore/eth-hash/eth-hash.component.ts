@@ -6,10 +6,10 @@ import { Input } from '@angular/core';
 import { AreaChartData, GraphPoint } from '../../core/chart-api';
 
 @Component({
-  selector: 'eth-fan',
-  templateUrl: './fan.component.html',
+  selector: 'eth-hash',
+  templateUrl: './eth-hash.component.html',
 })
-export class FanComponent implements OnInit {
+export class EthHashComponent implements OnInit {
 
   @Input() data;
 
@@ -23,9 +23,9 @@ export class FanComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.claymore.getFanSeries()
+    this.claymore.getEthereumHashrateSeries()
       .subscribe((data: number[][]) => {
-        this.areaData = ClaymoreService.getPoints('10M', data);
+        this.areaData = ClaymoreService.getHashPoints('10M', data);
         this.kpiMin = ClaymoreService.getMin(data);
         this.kpiMax = ClaymoreService.getMax(data);
         this.kpiAvg = ClaymoreService.getAverage(data);

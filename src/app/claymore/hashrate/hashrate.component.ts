@@ -21,33 +21,6 @@ export class HashrateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.poll = this.pollHashrate()
-      .subscribe(hashrates => {
-
-        if(!this.areaData){
-          this.areaData = hashrates.map(h => [])
-        }
-
-        hashrates.forEach((hash, i) => {
-          let point: any = {
-            x: +(new Date()) - 3600000,
-            y: hash/1000
-          };
-
-          this.areaData[i].push(point);
-          if (this.areaData[i].length > 200) {
-            this.areaData[i].shift()
-          }
-        });
-        this.areaData = this.areaData.concat()
-      });
-  }
-
-  pollHashrate() {
-    return Observable.interval(1000)
-      .mergeMap(i => {
-        return this.claymore.getEthHarshrates()
-      })
   }
 
   ngOnDestroy() {
