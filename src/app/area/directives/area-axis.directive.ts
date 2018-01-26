@@ -52,7 +52,8 @@ export class AreaAxisDirective implements OnInit {
 
     protected drawYAxis(): void {
         this.yAxis = axisLeft(this.area.yScale)
-            .tickPadding(12)
+            .tickPadding(7)
+            .tickSize(0)
             .ticks(3);
 
         this.yAxisGroup = this.area.chart.append('g')

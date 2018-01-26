@@ -1,7 +1,8 @@
 import {Directive, OnInit} from '@angular/core';
 import * as d3 from 'd3';
 import {axisLeft, axisBottom} from 'd3-axis';
-import { AreaGraphComponent, AreaAxisDirective } from '../../area/index';
+import { AreaAxisDirective } from '../../area/directives/area-axis.directive';
+import { AreaGraphComponent } from '../../area/area-graph.component';
 
 /*
  * A directive that adds an x / y axis to an area chart

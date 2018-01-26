@@ -7,7 +7,6 @@ import { Input } from '@angular/core';
 @Component({
   selector: 'eth-temp',
   templateUrl: './temperature.component.html',
-  //styleUrls: ['./temperature.component.less']
 })
 export class TemperatureComponent implements OnInit {
 
@@ -25,7 +24,7 @@ export class TemperatureComponent implements OnInit {
   ngOnInit() {
     this.claymore.getTemperatureSeries()
       .subscribe((data: number[][]) => {
-        this.areaData = ClaymoreService.getPoints('10M', data);
+        this.areaData = ClaymoreService.getPoints('1H', data);
         this.kpiMin = ClaymoreService.getMin(data);
         this.kpiMax = ClaymoreService.getMax(data);
         this.kpiAvg = ClaymoreService.getAverage(data);

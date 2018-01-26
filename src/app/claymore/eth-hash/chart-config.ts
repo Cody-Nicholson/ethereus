@@ -1,4 +1,3 @@
-import { AreaChartConfig } from "../../area/index";
 import { ClaymoreChartConfig } from "../chart-config";
 
 export class EthHashChartConfig extends ClaymoreChartConfig {

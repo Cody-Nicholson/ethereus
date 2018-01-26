@@ -19,10 +19,8 @@ export class AreaChartConfig {
 
     areaFills: AreaFill[] = [
         {
-            fill: '#006cdb',
+            fill: '#564aa3',
             opacity: 0.1,
-            'fill-opacity': 0.75,
-            'stroke-width': '0',
         },
         {
             fill: '#7AB1CA',

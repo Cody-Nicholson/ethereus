@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AreaGraphComponent} from './area-graph.component';
-import {AreaLegendComponent} from './area-legend.component';
 import {AreaHoverDirective} from './directives/area-hover.directive';
 import {AreaFocusDirective} from './directives/area-focus.directive';
 import {AreaAxisDirective} from './directives/area-axis.directive';
 import {AreaBrushDirective} from './directives/area-brush.directive';
 import { AreaGridDirective } from './directives/area-grid.directive';
+import { AreaLegendComponent } from './legend/area-legend.component';
 
 const AreaComponents = [
     AreaGraphComponent,

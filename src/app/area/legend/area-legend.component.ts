@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { LineGraphHoverValue, AreaLegendItem } from '../core/chart-api';
-import { AreaGraphComponent } from './area-graph.component';
-import { AreaHoverDirective } from './directives/area-hover.directive';
+import { AreaLegendItem, LineGraphHoverValue } from '../../core/chart-api';
+import { AreaGraphComponent } from '../area-graph.component';
+import { AreaHoverDirective } from '../directives/area-hover.directive';
 
 
 @Component({

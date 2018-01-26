@@ -4,12 +4,11 @@ import { ClaymoreService } from '../claymore.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Input } from '@angular/core';
 import { AreaChartData } from '../../core/chart-api';
-import { TempChartConfig } from './area-config';
+import { TempChartConfig } from '../chart-config';
 
 @Component({
   selector: 'eth-temp-chart',
   templateUrl: './temperature-chart.component.html',
-  //styleUrls: ['./temperature-chart.component.less']
 })
 export class TemperatureChartComponent implements OnInit {
 

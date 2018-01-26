@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  ethereusApi: 'http://localhost:3005',
-  claymoreApi: 'http://localhost:3005',
+  ethereusApi: 'http://192.168.2.247:3005',
+  claymoreApi: 'http://192.168.2.247:3005',
 };

@@ -22,4 +22,10 @@ export class EnergyService extends HttpJsonService{
             .map(this.extractData)
             .catch(this.handleError);
     }
+
+    getPowerSeries(alias: string = '1H'): Observable<any> {
+        return this.http.get(`${this.baseApi}/energy/power/129/${alias}`)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
 }

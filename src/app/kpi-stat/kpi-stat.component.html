@@ -1,0 +1,11 @@
+<div [ngClass]="getSizeClass()">
+    <div class="outer-box"
+         [class.bg-blue]="color == 'blue'"
+         [class.bg-purple]="color == 'purple'"
+         [class.bg-aqua]="color == 'aqua'">
+        <div class="center-box">
+          <div>{{value}}</div>
+          <label>{{label}}</label>
+        </div>
+      </div>
+</div>

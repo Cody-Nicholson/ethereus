@@ -14,7 +14,6 @@ export class FanComponent implements OnInit {
   @Input() data;
 
   areaData: any;
-  poll: Subscription;
   kpiMin: number = Infinity;
   kpiMax: number = 0;
   kpiAvg: number;

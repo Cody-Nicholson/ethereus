@@ -1,4 +1,5 @@
-import { AreaChartConfig } from "../area/index";
+import { AreaChartConfig } from "../area/area-graph-config";
+
 
 export class AreaDemoConfig extends AreaChartConfig {
 

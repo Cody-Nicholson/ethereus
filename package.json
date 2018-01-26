@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^5.1.0",
     "@angular/platform-browser-dynamic": "^5.1.0",
     "@angular/router": "^5.1.0",
+    "@synergetic/core": "^0.1.1",
     "@types/lodash": "^4.14.96",
     "core-js": "^2.4.1",
     "d3": "^4.12.2",

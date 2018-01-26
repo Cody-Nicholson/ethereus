@@ -56,6 +56,7 @@ export class AreaGraphComponent extends SvgGraphComponent implements OnChanges, 
 
     ngAfterViewInit() {
         this.initContainer(this.element);
+        console.log(this.config)
         this.margin = this.config.margin;
         this.width = this.graphWidth;
         this.height = this.graphHeight;
@@ -109,10 +110,6 @@ export class AreaGraphComponent extends SvgGraphComponent implements OnChanges, 
         this.setScaleDomain();
         this.updateAreas();
         this.updateLines();
-    }
-
-    initGeometry() {
-
     }
 
     private groupAreas() {

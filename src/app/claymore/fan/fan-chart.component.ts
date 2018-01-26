@@ -4,12 +4,11 @@ import { ClaymoreService } from '../claymore.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Input } from '@angular/core';
 import { AreaChartData } from '../../core/chart-api';
-import { FanChartConfig } from './area-config';
+import { FanChartConfig } from '../chart-config';
 
 @Component({
   selector: 'eth-fan-chart',
   templateUrl: './fan-chart.component.html',
-  //styleUrls: ['./temperature-chart.component.less']
 })
 export class FanChartComponent implements OnInit {
 

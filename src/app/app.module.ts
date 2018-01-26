@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { AreaGraphModule } from './area/index';
 import { EnergyChartComponent } from './energy-chart/energy-chart.component';
 import { CommonModule } from '@angular/common';
 import { EnergyService } from './energy-chart/energy-chart.service';
@@ -16,11 +15,14 @@ import { ClaymoreService } from './claymore/claymore.service';
 import { TemperatureComponent } from './claymore/temperature/temperature.component';
 import { TemperatureChartComponent } from './claymore/temperature/temperature-chart.component';
 import { TempAxisDirective } from './claymore/temperature/temp-axis.directive';
-import { FanComponent } from './claymore/temperature/fan.component';
-import { FanChartComponent } from './claymore/temperature/fan-chart.component';
 import { KpiCellModule } from "./core/kpi/kpi-cell.module";
 import { EthHashComponent } from './claymore/eth-hash/eth-hash.component';
 import { EthHashChartComponent } from './claymore/eth-hash/eth-hash-chart.component';
+import { KpiStatComponent } from './kpi-stat/kpi-stat.component';
+import { FanComponent } from './claymore/fan/fan.component';
+import { FanChartComponent } from './claymore/fan/fan-chart.component';
+import { AreaGraphModule } from './area/area-graph.module';
+import { EnergyComponent } from './energy-chart/energy.component';
 
 @NgModule({
   imports: [
@@ -31,10 +33,10 @@ import { EthHashChartComponent } from './claymore/eth-hash/eth-hash-chart.compon
     RouterModule,
     AppRoutingModule,
     KpiCellModule
-
   ],
   declarations: [
     AppComponent,
+    EnergyComponent,
     EnergyChartComponent,
     HeaderComponent,
     HashrateComponent,
@@ -44,7 +46,8 @@ import { EthHashChartComponent } from './claymore/eth-hash/eth-hash-chart.compon
     FanComponent,
     FanChartComponent,
     EthHashComponent,
-    EthHashChartComponent
+    EthHashChartComponent,
+    KpiStatComponent,
   ],
   providers: [
     EnergyService,
