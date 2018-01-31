@@ -5,7 +5,8 @@ import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { mergeMap } from "rxjs/operators/mergeMap";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
-import { flatten, mean} from 'lodash';
+import { flatten, mean, minBy, maxBy, meanBy, sumBy} from 'lodash';
+import { AreaChartData } from "../core/chart-api";
 
 @Injectable()
 export class ClaymoreService extends HttpJsonService {
@@ -48,6 +49,24 @@ export class ClaymoreService extends HttpJsonService {
             .catch(this.handleError);
     }
 
+    getFanTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
+        return this.http.get(`${this.baseApi}/fans/${ip}/${alias}/timed`)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getEthTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
+        return this.http.get(`${this.baseApi}/eth/${ip}/${alias}/timed`)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getTemperatureTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
+        return this.http.get(`${this.baseApi}/temps/${ip}/${alias}/timed`)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     getTemperatureSeries(ip: string = ' ', alias: string = '1H'): Observable<number[][]> {
         return this.http.get(`${this.baseApi}/temps/${ip}/${alias}`)
             .map(this.extractData)
@@ -77,15 +96,33 @@ export class ClaymoreService extends HttpJsonService {
         })
     }
 
-    static getPoints(alias: string, series: number[][]) {
+    static getPoints(alias: string, series: TimedSeriesItem[][]): AreaChartData {
         return series.map((line, i) => {
-            return line.map((value, i) => {
+            return line.map((point, i) => {
                 return {
-                    x: +new Date() - aliasToTime[alias] + i * 5000,
-                    y: value
+                    x: point.timestamp,
+                    y: point.value
                 }
             })
         })
+    }
+
+    static getTimedMin(series: TimedSeriesItem[][]): number{
+        return minBy(flatten(series), 'value').value;
+    }
+
+    static getTimedMax(series: TimedSeriesItem[][]): number{
+        return maxBy(flatten(series), 'value').value;
+    }
+
+    static getTimedAverage(series: TimedSeriesItem[][]){
+        return meanBy(flatten(series), 'value');
+    }
+
+    static getTimedTotal(series: TimedSeriesItem[][]){
+        return sumBy(series, (line) => {
+            return line[line.length-1].value;
+        });
     }
 
     static getMin(series: number[][]){
@@ -100,6 +137,11 @@ export class ClaymoreService extends HttpJsonService {
         return mean(flatten(series))
     }
     
+}
+
+export interface TimedSeriesItem{
+    timestamp: number;
+    value: number;
 }
 
 const oneMin = 1000 * 60;

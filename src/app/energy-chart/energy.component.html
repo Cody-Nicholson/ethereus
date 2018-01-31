@@ -9,6 +9,16 @@
 
         <kpi-stat [value]="(kpiAvg |  number:'0.1-1') + ' W' " label="1 Hour Average" color="aqua">
         </kpi-stat>
+
+        <kpi-stat [value]="(kpiTotal |  number:'0.1-1') + ' W' " label="Live Total" color="bg-red">
+        </kpi-stat>
+    </div>
+
+    <div class="btn-group btn-group-alias">
+        <button (click)="setAlias('10M')" type="button" class="btn btn-primary">10M</button>
+        <button (click)="setAlias('1H')" type="button" class="btn btn-primary">1H</button>
+        <button (click)="setAlias('6H')" type="button" class="btn btn-primary">6H</button>
+        <button (click)="setAlias('12H')" type="button" class="btn btn-primary">12H</button>
     </div>
 
     <div class="box table-box">

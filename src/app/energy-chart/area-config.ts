@@ -11,17 +11,17 @@ export class AreaDemoConfig extends AreaChartConfig {
         this.areaFills = [
             {
                 fill: '#006cdb',
-                opacity: 0.1,
-                'fill-opacity': 0.75,
-                'stroke-width': '0',
+                opacity: 0,
+               // 'fill-opacity': 0.75,
+               // 'stroke-width': '0',
             },
             {
                 fill: '#7AB1CA',
-                opacity: .3,
+                opacity: 0,
             },
             {
                 fill: '#C1ABD1',
-                opacity: .3,
+                opacity: 0,
             }
         ];
 

@@ -11,6 +11,13 @@
     </kpi-stat>
   </div>
 
+  <div class="btn-group btn-group-alias">
+    <button (click)="setAlias('10M')" type="button" class="btn btn-primary">10M</button>
+    <button (click)="setAlias('1H')" type="button" class="btn btn-primary">1H</button>
+    <button (click)="setAlias('6H')" type="button" class="btn btn-primary">6H</button>
+    <button (click)="setAlias('12H')" type="button" class="btn btn-primary">12H</button>
+  </div>
+
   <div class="box table-box">
     <eth-fan-chart [data]="areaData"></eth-fan-chart>
   </div>
