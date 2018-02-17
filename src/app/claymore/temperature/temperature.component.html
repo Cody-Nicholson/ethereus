@@ -2,28 +2,28 @@
 
   <div class="row">
     <kpi-stat [value]="(kpiMin | number:'0.1-1') + ' °C'" 
-              label="1 Hour Low">
+              label="{{alias | alias}} Low">
     </kpi-stat>
 
     <kpi-stat [value]="(kpiMax |  number:'0.1-1') + ' °C'" 
-              label="1 Hour High"
+              label="{{alias | alias}} High"
               color="purple">
     </kpi-stat>
 
     <kpi-stat [value]="(kpiAvg |  number:'0.1-1') + ' °C'"
-              label="1 Hour Average"
+              label="{{alias | alias}} Average"
               color="aqua">
     </kpi-stat>
   </div>
 
   <div class="btn-group btn-group-alias">
-    <button (click)="setAlias('10M')" type="button" class="btn btn-primary">10M</button>
-    <button (click)="setAlias('1H')" type="button" class="btn btn-primary">1H</button>
-    <button (click)="setAlias('6H')" type="button" class="btn btn-primary">6H</button>
-    <button (click)="setAlias('12H')" type="button" class="btn btn-primary">12H</button>
+    <button [class.active]="alias == '10M'" (click)="setAlias('10M')" type="button" class="btn btn-primary">10M</button>
+    <button [class.active]="alias == '1H'" (click)="setAlias('1H')" type="button" class="btn btn-primary">1H</button>
+    <button [class.active]="alias == '6H'" (click)="setAlias('6H')" type="button" class="btn btn-primary">6H</button>
+    <button [class.active]="alias == '12H'" (click)="setAlias('12H')" type="button" class="btn btn-primary">12H</button>
   </div>
 
   <div class="box table-box">
-    <eth-temp-chart [data]="areaData"></eth-temp-chart>
+    <eth-temp-chart [legendLabels]="legendLabels" [data]="areaData"></eth-temp-chart>
   </div>
 </div>

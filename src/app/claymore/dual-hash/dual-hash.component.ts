@@ -8,10 +8,10 @@ import { ChartSeriesComponent } from '../../core/ChartSeriesComponent';
 import { RigService } from '../../rigs/rig.service';
 
 @Component({
-  selector: 'eth-hash',
-  templateUrl: './eth-hash.component.html',
+  selector: 'dual-hash',
+  templateUrl: './dual-hash.component.html',
 })
-export class EthHashComponent extends ChartSeriesComponent implements OnInit {
+export class DualHashComponent extends ChartSeriesComponent implements OnInit {
 
   legendLabels: string[] = [
     'Gigabyte Aoris 4G',
@@ -29,7 +29,7 @@ export class EthHashComponent extends ChartSeriesComponent implements OnInit {
   query() {
     return this.rigService.getAll()
       .switchMap((rigs) => {
-        return this.claymore.getEthTimedSeries(rigs[0].ip, this.alias)
+        return this.claymore.getDualTimedSeries(rigs[0].ip, this.alias)
           .map(timedSeries => { return this.mapHashScale(timedSeries) })
       })
 

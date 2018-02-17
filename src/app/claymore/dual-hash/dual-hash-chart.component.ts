@@ -4,13 +4,15 @@ import { ClaymoreService } from '../claymore.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Input } from '@angular/core';
 import { AreaChartData } from '../../core/chart-api';
-import { TempChartConfig } from '../chart-config';
+import { DualHashChartConfig } from './chart-config';
+import { ClaymoreChartConfig } from '../chart-config';
 
 @Component({
-  selector: 'eth-temp-chart',
-  templateUrl: './temperature-chart.component.html',
+  selector: 'dual-hash-chart',
+  templateUrl: './dual-hash-chart.component.html',
+  //styleUrls: ['./temperature-chart.component.less']
 })
-export class TemperatureChartComponent implements OnInit {
+export class DualHashChartComponent implements OnInit {
 
   @Input() data: AreaChartData;
   @Input() legendLabels: string[];
@@ -21,7 +23,7 @@ export class TemperatureChartComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.areaConfig = new TempChartConfig();
+    this.areaConfig = new DualHashChartConfig();
   }
 
 }

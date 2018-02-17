@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import { EnergyChartComponent } from './energy-chart/energy-chart.component';
 import { CommonModule } from '@angular/common';
@@ -10,7 +8,6 @@ import { HttpModule } from '@angular/http';
 import { HeaderComponent } from './core/header/header.component';
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
-import { HashrateComponent } from './claymore/hashrate/hashrate.component';
 import { ClaymoreService } from './claymore/claymore.service';
 import { TemperatureComponent } from './claymore/temperature/temperature.component';
 import { TemperatureChartComponent } from './claymore/temperature/temperature-chart.component';
@@ -23,6 +20,14 @@ import { FanComponent } from './claymore/fan/fan.component';
 import { FanChartComponent } from './claymore/fan/fan-chart.component';
 import { AreaGraphModule } from './area/area-graph.module';
 import { EnergyComponent } from './energy-chart/energy.component';
+import { AsyncLocalStorageModule } from 'angular-async-local-storage';
+import { SynValueListComponent } from './value-list/value-list';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RigsComponent } from './rigs/rigs.component';
+import { RigService } from './rigs/rig.service';
+import { DualHashChartComponent } from './claymore/dual-hash/dual-hash-chart.component';
+import { DualHashComponent } from './claymore/dual-hash/dual-hash.component';
+import { AliasPipe } from './core/alias.pipe';
 
 @NgModule({
   imports: [
@@ -32,14 +37,16 @@ import { EnergyComponent } from './energy-chart/energy.component';
     HttpModule,
     RouterModule,
     AppRoutingModule,
-    KpiCellModule
+    KpiCellModule,
+    AsyncLocalStorageModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
     EnergyComponent,
     EnergyChartComponent,
     HeaderComponent,
-    HashrateComponent,
     TemperatureChartComponent,
     TemperatureComponent,
     TempAxisDirective,
@@ -47,11 +54,17 @@ import { EnergyComponent } from './energy-chart/energy.component';
     FanChartComponent,
     EthHashComponent,
     EthHashChartComponent,
+    DualHashChartComponent,
+    DualHashComponent,
     KpiStatComponent,
+    SynValueListComponent,
+    RigsComponent,
+    AliasPipe
   ],
   providers: [
     EnergyService,
-    ClaymoreService
+    ClaymoreService,
+    RigService
   ],
   bootstrap: [AppComponent]
 })

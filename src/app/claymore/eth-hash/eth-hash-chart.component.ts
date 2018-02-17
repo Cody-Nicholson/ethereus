@@ -14,6 +14,7 @@ import { EthHashChartConfig } from './chart-config';
 export class EthHashChartComponent implements OnInit {
 
   @Input() data: AreaChartData;
+  @Input() legendLabels: string[];
 
   areaConfig: any;
 

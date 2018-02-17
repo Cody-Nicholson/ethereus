@@ -25,21 +25,21 @@ export class ClaymoreService extends HttpJsonService {
             .catch(this.handleError);
     }
 
-    getSnapshot(): Observable<ClaymoreData> {
-        return this.http.get(`${this.baseApi}/stats/z`)
+    getSnapshot(ip: string): Observable<ClaymoreData> {
+        return this.http.get(`${this.baseApi}/stats/${ip}`)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    getEthHarshrates(): Observable<number[]> {
-        return this.getSnapshot()
+    getEthHarshrates(ip: string): Observable<number[]> {
+        return this.getSnapshot(ip)
             .map((data) => {
                 return data.ethHash;
             })
     }
 
-    getTemperatures(): Observable<number[]> {
-        return this.getSnapshot()
+    getTemperatures(ip: string): Observable<number[]> {
+        return this.getSnapshot(ip)
             .map(data => data.temps);
     }
 
@@ -57,6 +57,12 @@ export class ClaymoreService extends HttpJsonService {
 
     getEthTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
         return this.http.get(`${this.baseApi}/eth/${ip}/${alias}/timed`)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getDualTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
+        return this.http.get(`${this.baseApi}/dual/${ip}/${alias}/timed`)
             .map(this.extractData)
             .catch(this.handleError);
     }

@@ -12,17 +12,8 @@ import { FanChartConfig } from '../chart-config';
 })
 export class FanChartComponent implements OnInit {
 
-  legendLabels: string[] = [
-    'Gigabyte Aoris 4G',
-    'MSI Armor 4GB',
-    'Asus Dual OC 4G',
-    'PowerColor Red Dragon 8GB',
-    'XFX XXX OC 4GB',
-    'PowerColor Red Dragon 4GB'
-  ];
-
-
   @Input() data: AreaChartData;
+  @Input() legendLabels: string[];
 
   areaConfig: any;
 

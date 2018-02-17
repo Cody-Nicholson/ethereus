@@ -6,7 +6,6 @@ import { Observable } from "rxjs/Observable";
 
 export abstract class ChartSeriesComponent {
 
-
     areaData: AreaChartData;
     kpiMin: number = Infinity;
     kpiMax: number = 0;

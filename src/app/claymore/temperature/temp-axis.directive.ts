@@ -1,6 +1,5 @@
-import {Directive, OnInit} from '@angular/core';
-import * as d3 from 'd3';
-import {axisLeft, axisBottom} from 'd3-axis';
+import { Directive, OnInit } from '@angular/core';
+import { axisLeft, axisBottom } from 'd3-axis';
 import { AreaAxisDirective } from '../../area/directives/area-axis.directive';
 import { AreaGraphComponent } from '../../area/area-graph.component';
 

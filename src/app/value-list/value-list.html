@@ -1,0 +1,43 @@
+<div class="syn-value-list">
+  <div *ngIf="!values.length">
+    <div class="syn-value empty-value">
+      None
+    </div>
+  </div>
+  <div *ngFor="let value of values"
+       class="syn-value-row">
+    <div class="syn-value">
+      {{value}}
+    </div>
+    <button class="btn btn-link"
+            (click)="remove(value)">
+      Remove
+    </button>
+  </div>
+</div>
+
+<div class="form-group"
+     [ngClass]="{
+        'has-error': hasInvalidInput
+      }">
+  <div [formGroup]="form"
+       class="input-group">
+    <input #addInput
+           formControlName="valInput"
+           type="text"
+           class="form-control"
+           (blur)="onBlur()"
+           [placeholder]="placeholder"/>
+    <span class="input-group-btn">
+      <button class="btn btn-default"
+              type="button"
+              (click)="add()">
+        {{buttonLabel}}
+      </button>
+    </span>
+  </div>
+  <span class="help-block"
+        *ngIf="hasInvalidInput">
+    {{invalidMessage}}
+  </span>
+</div>

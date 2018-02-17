@@ -2,7 +2,7 @@
 
   <div class="row">
     <kpi-stat [value]="(kpiMin | number:'0.1-1') + ' Mh/s'"
-              label="{{alias | alias}} Low">
+              label="{{alias | alias}}  Low">
     </kpi-stat>
 
     <kpi-stat [value]="(kpiMax |  number:'0.1-1') + ' Mh/s'" 
@@ -26,6 +26,6 @@
   </div>
 
   <div class="box table-box">
-    <eth-hash-chart [legendLabels]="legendLabels" [data]="areaData"></eth-hash-chart>
+    <dual-hash-chart [legendLabels]="legendLabels" [data]="areaData"></dual-hash-chart>
   </div>
 </div>
