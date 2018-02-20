@@ -35,7 +35,7 @@ export class ClaymoreService extends HttpJsonService {
         return this.getSnapshot(ip)
             .map((data) => {
                 return data.ethHash;
-            })
+            });
     }
 
     getTemperatures(ip: string): Observable<number[]> {
@@ -114,21 +114,23 @@ export class ClaymoreService extends HttpJsonService {
     }
 
     static getTimedMin(series: TimedSeriesItem[][]): number{
-        return minBy(flatten(series), 'value').value;
+        let min = minBy(flatten(series), 'value');
+        return min ? min.value : 0;
     }
 
     static getTimedMax(series: TimedSeriesItem[][]): number{
-        return maxBy(flatten(series), 'value').value;
+        let max = maxBy(flatten(series), 'value');
+        return max ? max.value : 0;
     }
 
     static getTimedAverage(series: TimedSeriesItem[][]){
-        return meanBy(flatten(series), 'value');
+        return meanBy(flatten(series), 'value') || 0;
     }
 
     static getTimedTotal(series: TimedSeriesItem[][]){
         return sumBy(series, (line) => {
             return line[line.length-1].value;
-        });
+        }) || 0;
     }
 
     static getMin(series: number[][]){

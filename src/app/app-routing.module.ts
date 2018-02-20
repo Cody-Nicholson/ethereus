@@ -15,19 +15,19 @@ const appRoutes: Routes = [
     component: EnergyComponent,
   },
   {
-    path: 'eth-hashrate',
+    path: 'rigs/:ip/eth-hashrate',
     component: EthHashComponent
   },
   {
-    path: 'dual-hashrate',
+    path: 'rigs/:ip/dual-hashrate',
     component: DualHashComponent
   },
   {
-    path: 'temperatures',
+    path: 'rigs/:ip/temperatures',
     component: TemperatureComponent
   },
   {
-    path: 'fans',
+    path: 'rigs/:ip/fans',
     component: FanComponent
   },
   {

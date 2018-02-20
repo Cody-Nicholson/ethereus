@@ -7,4 +7,5 @@ export const environment = {
   production: false,
   ethereusApi: 'http://192.168.2.247:3005',
   claymoreApi: 'http://192.168.2.247:3005',
+  rigApi: 'http://192.168.2.247:3005',
 };

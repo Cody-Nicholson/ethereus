@@ -21,30 +21,31 @@
         </li>
   
         <li routerLinkActive="active">
-          <a [routerLink]="['/eth-hashrate']">
+          <a [routerLink]="['rigs', selectedIp, 'eth-hashrate']">
             Ethereum Hashrate
           </a>
         </li>
 
         <li routerLinkActive="active">
-          <a [routerLink]="['/dual-hashrate']">
+          <a [routerLink]="['rigs', selectedIp, 'dual-hashrate']">
             Dual Hashrate
           </a>
         </li>
         
         <li routerLinkActive="active">
-          <a [routerLink]="['/temperatures']">
+          <a [routerLink]="['rigs', selectedIp, 'temperatures']">
             Temperature
           </a>
         </li>
 
         <li routerLinkActive="active">
-          <a [routerLink]="['/fans']">
+          <a [routerLink]="['rigs', selectedIp, 'fans']">
             Fans
           </a>
         </li>
 
-        <li routerLinkActive="active">
+        <li routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
             <a [routerLink]="['/rigs']">
               Rigs
             </a>

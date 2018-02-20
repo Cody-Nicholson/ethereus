@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { FormArray } from '@angular/forms/src/model';
-import { RigService } from './rig.service';
+import { RigService, Rig } from './rig.service';
 
 @Component({
   selector: 'app-rigs',
@@ -11,23 +11,36 @@ import { RigService } from './rig.service';
 })
 export class RigsComponent implements OnInit {
   form: FormGroup;
-  constructor(protected builder: FormBuilder,
-    protected rigService: RigService) {
+  rigs: Rig[];
 
+  selectedIp: string;
 
-    this.rigService.getAll().subscribe(rigs => {
-      this.setRigs(rigs)
-    })
+  constructor(protected builder: FormBuilder, protected rigService: RigService) {
 
-    let rgs = [{ name: 'rig1', 'ip': '1.2.2' }].map(r => this.builder.group(r));
+    this.rigService.getSelected()
+      .subscribe(rig => {
+        console.log('Got Selected', rig)
+        this.selectedIp = rig.ip;
+      })
+
+    this.rigService.getAll()
+      .subscribe(rigs => {
+        this.rigs = rigs;
+      })
 
     this.form = this.builder.group({
-      rigs: this.builder.array(rgs),
+      ip: '',
+      name: '',
+      gpus: this.builder.array(['', '', '', '', '', ''])
     });
   }
 
-  add(){
-    this.rigs.push(this.builder.group({name: '', ip: ''}));
+  get gpus() {
+    return this.form.get('gpus');
+  }
+
+  selectRig(rig: Rig) {
+    this.rigService.setSelected(rig);
   }
 
   setRigs(rigs) {
@@ -36,18 +49,17 @@ export class RigsComponent implements OnInit {
     this.form.setControl('rigs', array);
   }
 
-  get rigs(): FormArray {
-    return this.form.get('rigs') as FormArray;
-  };
+  onSubmit(rig: Rig) {
 
-  onSubmit() {
-    this.rigService.setAll(this.rigs.value).subscribe(z => {
+    // console.log(this.form.value)
 
-    })
+    this.rigService.put(this.form.value)
+      .subscribe(z => {
+        console.log(z);
+      })
   }
 
   ngOnInit() {
-    console.log(this.form.get('rigs'))
   }
 
 }
