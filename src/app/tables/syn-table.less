@@ -1,0 +1,148 @@
+
+@syn-th-color: #FFF;
+@syn-th-active-color: #FFF;
+
+@syn-th-bg: @syn-blue;
+@syn-th-active-bg: @syn-blue;
+@syn-th-hover: #FFF;
+@syn-th-border: none;
+@syn-th-active-border: none;
+
+@syn-td-border: #DADBE1;
+@syn-td-padding: 10px 15px;
+
+@syn-td-link-color: @syn-blue;
+
+@syn-bg-accent: #F9F7F7;
+
+.syn-table{
+  font-size: 13px;
+  color: #666666;
+
+  ul.thead,
+  ul.tbody,
+  ul.tfoot,
+  ul.tr{
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li.row{
+    margin-left: 0;
+    margin-right: 0;
+
+    &.active{
+      background-color: rgba(44,111,144,.2);
+    }
+  }
+
+  .thead{
+
+    .tr li{
+
+      &:first-child{
+        border-top-left-radius: 2px;
+      }
+
+      &:last-child{
+        border-top-right-radius: 2px;
+      }
+
+      .sortable{
+
+        &:hover{
+          color: @syn-th-hover;
+        }
+
+        &.active:after,
+        &:hover:after{
+          .caret();
+        }
+
+        &:after{
+          right: 7px;
+          top: 19px;
+          position: absolute;
+          opacity: 1;
+          content: "";
+        }
+
+        &.sorted-asc:after{
+          .rotate(180deg);
+        }
+      }
+    }
+
+    .tr .td{
+      background-color: @syn-th-bg;
+      border: 1px solid @syn-th-border;
+      color: @syn-th-color;
+      padding: @syn-td-padding;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: left;
+      .transition(all 150ms ease-in);
+
+      &.active{
+        background-color: @syn-th-active-bg;
+        color: @syn-th-active-color;
+        border-color: @syn-th-active-border;
+
+        &:hover{
+          background-color: @syn-th-active-bg;
+        }
+      }
+
+      &.sortable:hover{
+        background-color: @syn-th-active-bg;
+        border-color: @syn-th-active-border;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .tbody > li.row:first-child{
+    border-top: none;
+  }
+
+  .tbody > li.row{
+    border-top: 2px solid @syn-td-border;
+  }
+
+  .tbody .tr{
+
+    .td{
+      padding: @syn-td-padding;
+
+      a{
+        color: @syn-td-link-color;
+        font-weight: bold;
+        &.btn{
+          color: #FFF;
+        }
+      }
+    }
+  }
+
+  .tfoot .tr{
+    background-color: @syn-th-bg;
+    padding: 4px;
+
+    &:first-child{
+      border-bottom-left-radius: 2px;
+    }
+
+    &:last-child{
+      border-bottom-right-radius: 2px;
+    }
+
+    .td{
+      color: #FFF;
+      padding: 4px;
+      cursor: pointer;
+    }
+  }
+}
+

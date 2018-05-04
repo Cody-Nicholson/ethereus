@@ -1,0 +1,26 @@
+<div class="col-xs-10 col-xs-offset-1">
+  <nav class="box-nav" *ngIf="rig">
+
+    <div class="ob-breadcrumb-group">
+
+      <ol class="ob-breadcrumb">
+
+        <li>
+          <a [routerLink]="['/rigs/overview']">
+            All Rigs
+          </a>
+        </li>
+
+        <li>
+          {{rig.name}}
+        </li>
+
+      </ol>
+
+    </div>
+
+  </nav>
+
+  <router-outlet></router-outlet>
+
+</div>

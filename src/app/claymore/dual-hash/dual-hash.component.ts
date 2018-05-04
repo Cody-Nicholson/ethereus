@@ -28,7 +28,7 @@ export class DualHashComponent extends ChartSeriesComponent implements OnInit {
   }
 
   query() {
-    return this.claymore.getDualTimedSeries(this.route.snapshot.params.ip, this.alias)
+    return this.claymore.getDualTimedSeries(this.route.snapshot.parent.params.ip, this.alias)
       .map(timedSeries => {
         return this.mapHashScale(timedSeries)
       })

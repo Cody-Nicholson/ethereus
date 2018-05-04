@@ -1,0 +1,133 @@
+//== Table
+
+@box-th-color: #FFF;
+@box-th-active-color: #FFF;
+@box-th-bg: #598da5;
+@box-th-active-bg: #30708f;
+@box-th-hover: #fff;
+@box-th-border: #7ba1b3;
+@box-th-active-border: #7ba1b3;
+
+@box-td-border: #CCC;
+@box-td-padding: 10px 15px;
+@box-td-link-color: #4554a2;
+
+@box-table-bg-accent: #EEE;
+
+.box{
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #C7C6C4;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  -webkit-box-shadow: 0 1px 3px 0 #C5C5C5;
+  box-shadow: 0 1px 3px 0 #C5C5C5;
+}
+
+.box-table{
+  font-size: 14px;
+  color: @syn-grey;
+
+  ul.thead,
+  ul.tbody,
+  ul.tr{
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li.row{
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .thead{
+
+    li{
+
+      .sortable{
+
+        &:hover{
+          color: @box-th-hover;
+        }
+
+        &.active:after,
+        &:hover:after{
+          .caret();
+        }
+
+        &:after{
+          right: 7px;
+          top: 19px;
+          position: absolute;
+          opacity: 1;
+          content: "";
+        }
+
+        &.sorted-asc:after{
+          .rotate(180deg);
+        }
+      }
+    }
+
+    .tr .td{
+      background-color: @box-th-bg;
+      border: 1px solid @box-th-border;
+      color: @box-th-color;
+      overflow: hidden;
+      padding: @box-td-padding;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: left;
+      text-transform: capitalize;
+
+      .transition(all 150ms ease-in);
+
+      &.active{
+        background-color: @box-th-active-bg;
+        color: @box-th-active-color;
+        border-color: @box-th-active-border;
+
+        &:hover{
+          background-color: @box-th-active-bg;
+        }
+      }
+
+      &:hover{
+        background-color: @box-th-active-bg;
+        border-color: @box-th-active-border;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .tbody > li.row:first-child{
+    border-top: none;
+  }
+
+  .tbody > li.row{
+    border-top: 1px solid @box-td-border;
+  }
+
+  .tbody .tr{
+
+    .td{
+      padding: @box-td-padding;
+
+      a{
+        color: @box-td-link-color;
+      }
+    }
+  }
+}
+
+.box-table-striped{
+  .tbody > li.row{
+    border-top: none;
+  }
+
+  .tbody > li.row:nth-of-type(odd){
+    background-color: @box-table-bg-accent;
+  }
+}

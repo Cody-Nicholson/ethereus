@@ -23,11 +23,16 @@ import { EnergyComponent } from './energy-chart/energy.component';
 import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 import { SynValueListComponent } from './value-list/value-list';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RigsComponent } from './rigs/rigs.component';
+import { RigsComponent } from './rigs/edit/edit.component';
 import { RigService } from './rigs/rig.service';
 import { DualHashChartComponent } from './claymore/dual-hash/dual-hash-chart.component';
 import { DualHashComponent } from './claymore/dual-hash/dual-hash.component';
 import { AliasPipe } from './core/alias.pipe';
+import { AliasButtonsComponent } from './core/alias-buttons/alias-buttons.component';
+import { RigNavComponent } from './rigs/nav/nav.component';
+import { RigsOverviewComponent } from './rigs/overview/overview.component';
+import { TableModule } from './tables/table.module';
+import { ParallelBarsModule } from './parallel-bars/parallel-bars.module';
 
 @NgModule({
   imports: [
@@ -40,7 +45,9 @@ import { AliasPipe } from './core/alias.pipe';
     KpiCellModule,
     AsyncLocalStorageModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    TableModule,
+    ParallelBarsModule
   ],
   declarations: [
     AppComponent,
@@ -59,7 +66,10 @@ import { AliasPipe } from './core/alias.pipe';
     KpiStatComponent,
     SynValueListComponent,
     RigsComponent,
-    AliasPipe
+    AliasPipe,
+    AliasButtonsComponent,
+    RigNavComponent,
+    RigsOverviewComponent,
   ],
   providers: [
     EnergyService,

@@ -1,0 +1,1 @@
+Highlight an element's background by a percentage of it's value among a group.  Group multiple `parallelBar`s by adding them to a `parallelBars` container.  The highest value `parallelBar` will have a special color.

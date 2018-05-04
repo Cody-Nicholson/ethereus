@@ -5,8 +5,10 @@ import { TemperatureComponent } from './claymore/temperature/temperature.compone
 import { EthHashComponent } from './claymore/eth-hash/eth-hash.component';
 import { FanComponent } from './claymore/fan/fan.component';
 import { EnergyComponent } from './energy-chart/energy.component';
-import { RigsComponent } from './rigs/rigs.component';
+import { RigsComponent } from './rigs/edit/edit.component';
 import { DualHashComponent } from './claymore/dual-hash/dual-hash.component';
+import { RigNavComponent } from './rigs/nav/nav.component';
+import { RigsOverviewComponent } from './rigs/overview/overview.component';
 
 
 const appRoutes: Routes = [
@@ -15,20 +17,30 @@ const appRoutes: Routes = [
     component: EnergyComponent,
   },
   {
-    path: 'rigs/:ip/eth-hashrate',
-    component: EthHashComponent
+    path: 'rigs/overview',
+    component: RigsOverviewComponent,
   },
   {
-    path: 'rigs/:ip/dual-hashrate',
-    component: DualHashComponent
-  },
-  {
-    path: 'rigs/:ip/temperatures',
-    component: TemperatureComponent
-  },
-  {
-    path: 'rigs/:ip/fans',
-    component: FanComponent
+    path: 'rigs/:ip',
+    component: RigNavComponent,
+    children: [
+      {
+        path: 'eth-hashrate',
+        component: EthHashComponent
+      },
+      {
+        path: 'dual-hashrate',
+        component: DualHashComponent
+      },
+      {
+        path: 'temperatures',
+        component: TemperatureComponent
+      },
+      {
+        path: 'fans',
+        component: FanComponent
+      },
+    ]
   },
   {
     path: 'rigs',

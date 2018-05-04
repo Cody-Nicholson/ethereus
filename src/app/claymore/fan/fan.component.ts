@@ -27,7 +27,7 @@ export class FanComponent extends ChartSeriesComponent implements OnInit {
   }
 
   query() {
-    return this.claymore.getFanTimedSeries(this.route.snapshot.params.ip, this.alias)
+    return this.claymore.getFanTimedSeries(this.route.snapshot.parent.params.ip, this.alias)
   }
 
 }

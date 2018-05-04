@@ -26,7 +26,7 @@ export class ClaymoreService extends HttpJsonService {
     }
 
     getSnapshot(ip: string): Observable<ClaymoreData> {
-        return this.http.get(`${this.baseApi}/stats/${ip}`)
+        return this.http.get(`${this.baseApi}/snapshot/${ip}`)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -168,6 +168,8 @@ export interface ClaymoreData {
     dcrShares: number;
     ethRejects: number;
     dcrRejects: number;
+    ethInvalid: number;
+    dcrInvalid: number;
     ethHash: number[];
     dcrHash: number[];
     temps: number[];

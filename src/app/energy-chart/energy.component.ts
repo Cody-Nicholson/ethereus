@@ -21,8 +21,8 @@ export class EnergyComponent extends ChartSeriesComponent implements OnInit {
 
     query(){
         let ips = [
-            '192.168.2.97',
-            '192.168.2.188'
+            '192.168.2.189',
+            '192.168.2.98'
         ];
 
         return Observable.combineLatest(

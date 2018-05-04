@@ -1,0 +1,56 @@
+<div class="col-xs-10 col-xs-offset-1">
+
+  <div class="box table-box" *ngIf="rows">
+
+    <syn-table class="box-table" [rows]="rows">
+
+      <syn-thead>
+        <li synTh class="col-xs-1" key="name"></li>
+        <li synTh class="col-xs-2" [defaultSort]="true" label="IP" key="ip"></li>
+        <li synTh class="col-xs-2" label="Eth Hashrate" key="totalEthHash"></li>
+        <li synTh class="col-xs-1" label="Eth Invalid" key="ethInvalid"></li>
+        <li synTh class="col-xs-2" label="Fans" key="fans" [sortable]="0"></li>
+        <li synTh class="col-xs-2" label="Temps" key="temps" [sortable]="0"></li>
+      </syn-thead>
+
+      <syn-tbody>
+
+        <ng-template let-row="row">
+          <li class="td col-xs-1">
+            <a [routerLink]="['/rigs', row.ip, 'eth-hashrate']">
+              {{row.name}}
+            </a>
+          </li>
+
+          <li class="td col-xs-2">
+            {{row.ip}}
+          </li>
+
+          <li class="td col-xs-2">
+            {{row.ethHash.join(', ')}}
+          </li>
+
+          <li class="td col-xs-1">
+            {{row.ethInvalid}}
+          </li>
+
+          <li class="td col-xs-2">
+            <div class="row">
+              <div *ngFor="let fan of row.fans"
+                   parallelBar [value]="fan"><span>{{fan}}%</span></div>
+            </div>
+          </li>
+
+          <li class="td col-xs-2">
+            {{row.temps.join(', ')}}
+          </li>
+
+        </ng-template>
+
+      </syn-tbody>
+
+    </syn-table>
+
+  </div>
+
+</div>

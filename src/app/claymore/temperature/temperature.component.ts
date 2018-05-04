@@ -16,8 +16,8 @@ export class TemperatureComponent extends ChartSeriesComponent implements OnInit
   legendLabels: string[] = [];
 
   constructor(protected claymore: ClaymoreService,
-    protected rigService: RigService,
-    protected route: ActivatedRoute) {
+              protected rigService: RigService,
+              protected route: ActivatedRoute) {
     super();
 
     this.rigService.getSelected()
@@ -27,7 +27,6 @@ export class TemperatureComponent extends ChartSeriesComponent implements OnInit
   }
 
   query() {
-    return this.claymore.getTemperatureTimedSeries(this.route.snapshot.params.ip, this.alias)
+    return this.claymore.getTemperatureTimedSeries(this.route.snapshot.parent.params.ip, this.alias)
   }
-
 }

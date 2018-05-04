@@ -18,12 +18,7 @@
         </kpi-stat>
     </div>
 
-    <div class="btn-group btn-group-alias">
-        <button [class.active]="alias == '10M'" (click)="setAlias('10M')" type="button" class="btn btn-primary">10M</button>
-        <button [class.active]="alias == '1H'" (click)="setAlias('1H')" type="button" class="btn btn-primary">1H</button>
-        <button [class.active]="alias == '6H'" (click)="setAlias('6H')" type="button" class="btn btn-primary">6H</button>
-        <button [class.active]="alias == '12H'" (click)="setAlias('12H')" type="button" class="btn btn-primary">12H</button>
-      </div>
+    <eth-alias-buttons (aliasChange)="setAlias($event)" [alias]="alias"></eth-alias-buttons>
 
     <div class="box table-box">
         <energy-chart [data]="areaData"></energy-chart>

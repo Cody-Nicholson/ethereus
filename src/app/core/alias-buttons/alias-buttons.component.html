@@ -1,0 +1,9 @@
+<div class="btn-group btn-group-alias">
+  <button [class.active]="alias == '10M'" (click)="setAlias('10M')" type="button" class="btn btn-primary">10M</button>
+  <button [class.active]="alias == '1H'" (click)="setAlias('1H')" type="button" class="btn btn-primary">1H</button>
+  <button [class.active]="alias == '6H'" (click)="setAlias('6H')" type="button" class="btn btn-primary">6H</button>
+  <button [class.active]="alias == '12H'" (click)="setAlias('12H')" type="button" class="btn btn-primary">12H</button>
+  <button [class.active]="alias == '24H'" (click)="setAlias('24H')" type="button" class="btn btn-primary">24H</button>
+  <button [class.active]="alias == '2D'" (click)="setAlias('2D')" type="button" class="btn btn-primary">2D</button>
+  <button [class.active]="alias == '7D'" (click)="setAlias('7D')" type="button" class="btn btn-primary">7D</button>
+</div>

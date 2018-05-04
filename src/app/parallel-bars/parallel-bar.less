@@ -1,0 +1,37 @@
+@parallel-color: #83C5C9;
+@parallel-max-color: #5CB85C;
+
+.parallel-bar{
+  width: 0;
+  background-color: @parallel-color;
+
+  color: #292929;
+  font-weight: 600;
+  line-height: 28px;
+  height: 28px;
+
+  //opacity: .4;
+  -webkit-transition: width 0.6s ease;
+  transition: width 0.6s ease;
+
+  &.max-bar{
+    background-color: @parallel-max-color;
+  }
+
+  &.good-bar{
+    background-color: #2ab27b;
+  }
+
+  &.bad-bar{
+    background-color: #d83252;
+  }
+
+  &.parallel-bar-bg{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+}
