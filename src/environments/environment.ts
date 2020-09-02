@@ -3,9 +3,11 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
+import { apiUrl } from "../../config";
+
 export const environment = {
   production: false,
-  ethereusApi: 'http://192.168.2.247:3005',
-  claymoreApi: 'http://192.168.2.247:3005',
-  rigApi: 'http://192.168.2.247:3005',
+  ethereusApi: apiUrl,
+  claymoreApi: apiUrl,
+  rigApi: apiUrl,
 };

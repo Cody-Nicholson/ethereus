@@ -20,6 +20,9 @@ export class RigService extends HttpJsonService {
     constructor(protected http: Http) {
         super();
         let ip = localStorage.getItem('rigIp');
+        if(!ip){
+            return
+        }
         this.selected.next({ ip });
 
         this.get(ip)

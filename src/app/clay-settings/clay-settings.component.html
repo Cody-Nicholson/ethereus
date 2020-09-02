@@ -1,0 +1,43 @@
+
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="box col-xs-5 col-xs-offset-1">
+    <legend>Set Claymore Config</legend>
+
+    <div class="form-group">
+      <label>Eth Pool</label>
+      <input class="form-control" formControlName="ethPool">
+    </div>
+
+    <div class="form-group">
+      <label>Eth Address</label>
+      <input class="form-control" formControlName="ethWallet">
+    </div>
+
+    <div class="form-group">
+      <label>Eth Password</label>
+      <input class="form-control" formControlName="ethPass">
+    </div>
+
+    <div class="form-group">
+      <label>Dual Pool</label>
+      <input class="form-control" formControlName="ethPool">
+    </div>
+
+    <div class="form-group">
+      <label>Dual Address</label>
+      <input class="form-control" formControlName="ethWallet">
+    </div>
+
+    <div class="form-group">
+      <label>Dual Password</label>
+      <input class="form-control" formControlName="ethPass">
+    </div>
+
+
+    <div>
+      <button type="submit" class="btn btn-success">Add</button>
+    </div>
+
+  </div>
+</form>

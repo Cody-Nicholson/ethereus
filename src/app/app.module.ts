@@ -33,6 +33,7 @@ import { RigNavComponent } from './rigs/nav/nav.component';
 import { RigsOverviewComponent } from './rigs/overview/overview.component';
 import { TableModule } from './tables/table.module';
 import { ParallelBarsModule } from './parallel-bars/parallel-bars.module';
+import { ClaySettingsComponent } from './clay-settings/clay-settings.component';
 
 @NgModule({
   imports: [
@@ -70,6 +71,7 @@ import { ParallelBarsModule } from './parallel-bars/parallel-bars.module';
     AliasButtonsComponent,
     RigNavComponent,
     RigsOverviewComponent,
+    ClaySettingsComponent,
   ],
   providers: [
     EnergyService,

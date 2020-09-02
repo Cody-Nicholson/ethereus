@@ -1,4 +1,6 @@
 import { AreaChartConfig } from "../area/area-graph-config";
+import { scaleOrdinal } from 'd3-scale';
+import { schemeCategory20b } from 'd3-scale';
 
 
 export class ClaymoreChartConfig extends AreaChartConfig {
@@ -8,7 +10,7 @@ export class ClaymoreChartConfig extends AreaChartConfig {
 
     this.height = 400;
 
-    this.areaFills = new Array(6).fill(1).map(() => {
+    this.areaFills = new Array(12).fill(1).map(() => {
       return { fill: '#FFF', opacity: 0 }
     });
 
@@ -16,7 +18,13 @@ export class ClaymoreChartConfig extends AreaChartConfig {
     this.margin.right = 50;
     this.margin.top = 30;
 
-    this.lineStyles = [
+    let color = scaleOrdinal(schemeCategory20b);
+    let colors = [];
+    for (let i = 0; i <= 20; i++) {
+      colors.push(color(i + ''));
+    }
+
+    let orgColors = [
       "#564aa3",
       "#23b7e5",
       "#27b6af",
@@ -26,7 +34,9 @@ export class ClaymoreChartConfig extends AreaChartConfig {
       // "#990099",
       // "#0099c6",
       //"#3366cc",
-    ].map((c) => {
+    ]
+
+    this.lineStyles = colors.map((c) => {
       return { stroke: c, strokeWidth: '2px' }
     });
   }

@@ -28,6 +28,7 @@ export class EthHashComponent extends ChartSeriesComponent implements OnInit {
   }
 
   query() {
+    console.log(`Query Eth Timed: ${this.route.snapshot.parent.params.ip}: ${this.alias }`)
     return this.claymore.getEthTimedSeries(this.route.snapshot.parent.params.ip, this.alias)
       .map(timedSeries => { return this.mapHashScale(timedSeries) })
   }

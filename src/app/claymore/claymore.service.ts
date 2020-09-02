@@ -20,6 +20,7 @@ export class ClaymoreService extends HttpJsonService {
     }
 
     getAll(ip: string = ' ', alias: string = '10M'): Observable<ClaymoreData[]> {
+        console.log('Get All', this.baseApi)
         return this.http.get(`${this.baseApi}/stats/${ip}/${alias}`)
             .map(this.extractData)
             .catch(this.handleError);

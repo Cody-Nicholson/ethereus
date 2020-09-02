@@ -9,6 +9,7 @@ import { RigsComponent } from './rigs/edit/edit.component';
 import { DualHashComponent } from './claymore/dual-hash/dual-hash.component';
 import { RigNavComponent } from './rigs/nav/nav.component';
 import { RigsOverviewComponent } from './rigs/overview/overview.component';
+import { ClaySettingsComponent } from './clay-settings/clay-settings.component';
 
 
 const appRoutes: Routes = [
@@ -19,6 +20,10 @@ const appRoutes: Routes = [
   {
     path: 'rigs/overview',
     component: RigsOverviewComponent,
+  },
+  {
+    path: 'claymore',
+    component: ClaySettingsComponent,
   },
   {
     path: 'rigs/:ip',
