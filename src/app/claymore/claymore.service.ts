@@ -5,8 +5,9 @@ import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { mergeMap } from "rxjs/operators/mergeMap";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
-import { flatten, mean, minBy, maxBy, meanBy, sumBy} from 'lodash';
+import { flatten, mean, minBy, maxBy, meanBy, sumBy } from 'lodash';
 import { AreaChartData } from "../core/chart-api";
+import { timestamp, map, catchError, pluck } from "rxjs/operators";
 
 @Injectable()
 export class ClaymoreService extends HttpJsonService {
@@ -22,32 +23,40 @@ export class ClaymoreService extends HttpJsonService {
     getAll(ip: string = ' ', alias: string = '10M'): Observable<ClaymoreData[]> {
         console.log('Get All', this.baseApi)
         return this.http.get(`${this.baseApi}/stats/${ip}/${alias}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .pipe(
+                map(this.extractData),
+                catchError(this.handleError),
+            )
     }
 
     getSnapshot(ip: string): Observable<ClaymoreData> {
         return this.http.get(`${this.baseApi}/snapshot/${ip}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .pipe(
+                map(this.extractData),
+                catchError(this.handleError),
+            )
     }
 
     getEthHarshrates(ip: string): Observable<number[]> {
         return this.getSnapshot(ip)
-            .map((data) => {
-                return data.ethHash;
-            });
+            .pipe(
+                pluck('ethHash')
+            );
     }
 
     getTemperatures(ip: string): Observable<number[]> {
         return this.getSnapshot(ip)
-            .map(data => data.temps);
+            .pipe(
+                pluck('temps')
+            );
     }
 
     getFanSeries(ip: string = ' ', alias: string = '1H'): Observable<number[][]> {
         return this.http.get(`${this.baseApi}/fans/${ip}/${alias}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .pipe(
+                map(this.extractData),
+                catchError(this.handleError),
+            )
     }
 
     getFanTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
@@ -58,46 +67,58 @@ export class ClaymoreService extends HttpJsonService {
 
     getEthTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
         return this.http.get(`${this.baseApi}/eth/${ip}/${alias}/timed`)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .pipe(
+                map(this.extractData),
+                catchError(this.handleError),
+            )
     }
 
     getDualTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
         return this.http.get(`${this.baseApi}/dual/${ip}/${alias}/timed`)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .pipe(
+                map(this.extractData),
+                catchError(this.handleError),
+            )
     }
 
     getTemperatureTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
         return this.http.get(`${this.baseApi}/temps/${ip}/${alias}/timed`)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .pipe(
+                map(this.extractData),
+                catchError(this.handleError),
+            )
     }
 
     getTemperatureSeries(ip: string = ' ', alias: string = '1H'): Observable<number[][]> {
         return this.http.get(`${this.baseApi}/temps/${ip}/${alias}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .pipe(
+                map(this.extractData),
+                catchError(this.handleError),
+            )
     }
 
     getEthereumHashrateSeries(ip: string = ' ', alias: string = '1H'): Observable<number[][]> {
         return this.http.get(`${this.baseApi}/eth/${ip}/${alias}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .pipe(
+                map(this.extractData),
+                catchError(this.handleError),
+            )
     }
 
     getDualHashrateSeries(ip: string = ' ', alias: string = '1H'): Observable<number[][]> {
         return this.http.get(`${this.baseApi}/duel/${ip}/${alias}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .pipe(
+                map(this.extractData),
+                catchError(this.handleError),
+            )
     }
 
-    static getHashPoints(alias: string, series: number[][]){
+    static getHashPoints(alias: string, series: number[][]) {
         return series.map((line, i) => {
             return line.map((value, i) => {
                 return {
                     x: +new Date() - aliasToTime[alias] + i * 5000,
-                    y: value/1000
+                    y: value / 1000
                 }
             })
         })
@@ -114,41 +135,44 @@ export class ClaymoreService extends HttpJsonService {
         })
     }
 
-    static getTimedMin(series: TimedSeriesItem[][]): number{
+    static getTimedMin(series: TimedSeriesItem[][]): number {
         let min = minBy(flatten(series), 'value');
         return min ? min.value : 0;
     }
 
-    static getTimedMax(series: TimedSeriesItem[][]): number{
+    static getTimedMax(series: TimedSeriesItem[][]): number {
         let max = maxBy(flatten(series), 'value');
         return max ? max.value : 0;
     }
 
-    static getTimedAverage(series: TimedSeriesItem[][]){
+    static getTimedAverage(series: TimedSeriesItem[][]) {
         return meanBy(flatten(series), 'value') || 0;
     }
 
-    static getTimedTotal(series: TimedSeriesItem[][]){
+    static getTimedTotal(series: TimedSeriesItem[][]) {
         return sumBy(series, (line) => {
-            return line[line.length-1].value;
+            if (!line) {
+                return 0;
+            }
+            return line[line.length - 1].value;
         }) || 0;
     }
 
-    static getMin(series: number[][]){
+    static getMin(series: number[][]) {
         return Math.min(...flatten(series))
     }
 
-    static getMax(series: number[][]){
+    static getMax(series: number[][]) {
         return Math.max(...flatten(series))
     }
 
-    static getAverage(series: number[][]){
+    static getAverage(series: number[][]) {
         return mean(flatten(series))
     }
-    
+
 }
 
-export interface TimedSeriesItem{
+export interface TimedSeriesItem {
     timestamp: number;
     value: number;
 }

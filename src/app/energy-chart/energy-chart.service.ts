@@ -6,6 +6,7 @@ import { mergeMap } from "rxjs/operators/mergeMap";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
 import { TimedSeriesItem } from "../claymore/claymore.service";
+import { map, catchError } from "rxjs/operators";
 
 @Injectable()
 export class EnergyService extends HttpJsonService{
@@ -20,19 +21,25 @@ export class EnergyService extends HttpJsonService{
     
     get(): Observable<any> {
         return this.http.get(`${this.baseApi}/energy`)
-            .map(this.extractData)
-            .catch(this.handleError);
+        .pipe(
+            map(this.extractData),
+            catchError(this.handleError),
+        )
     }
 
     getPowerSeries(ip: string, alias: string = '1H'): Observable<TimedSeriesItem[][]> {
         return this.http.get(`${this.baseApi}/energy/power/${ip}/${alias}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+        .pipe(
+            map(this.extractData),
+            catchError(this.handleError),
+        )
     }
 
     getTimedPowerSeries(ip: string, alias: string = '1H'): Observable<TimedSeriesItem[][]> {
         return this.http.get(`${this.baseApi}/energy/power/${ip}/${alias}/timed`)
-            .map(this.extractData)
-            .catch(this.handleError);
+        .pipe(
+            map(this.extractData),
+            catchError(this.handleError),
+        )
     }
 }

@@ -7,6 +7,8 @@ import { ClaymoreService } from '../claymore/claymore.service';
 import { mean } from 'lodash';
 import { ChartSeriesComponent } from '../core/ChartSeriesComponent';
 import { energyIPs } from '../../../config';
+import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'energy-component',
@@ -20,15 +22,14 @@ export class EnergyComponent extends ChartSeriesComponent implements OnInit {
         super();
     }
 
-    query(){
+    query(): any{
 
-        return Observable.combineLatest(
-            this.energy.getTimedPowerSeries(energyIPs[0], this.alias),
-            this.energy.getTimedPowerSeries(energyIPs[1], this.alias),
-            (d1, d2) => {
-               // this.kpiTotal = d1[0][d1[0].length-1].value + d2[0][d2[0].length-1].value;
-                return [d1[0], d2[0]];
-            }
+        let energy$ = energyIPs.map(ip => this.energy.getTimedPowerSeries(ip, this.alias))
+
+        return combineLatest(energy$).pipe(
+            map(d1 => {
+                return d1[0]
+            }),
         )
         // .subscribe(data => {
           
