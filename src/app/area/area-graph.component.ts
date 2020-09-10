@@ -7,7 +7,6 @@ import {
     ElementRef,
     ViewChild,
     EventEmitter,
-    HostListener
 } from '@angular/core';
 import { SvgGraphComponent } from '../core/svg-charts';
 import { AreaChartData, AreaFill } from '../core/chart-api';
@@ -34,7 +33,7 @@ export class AreaGraphComponent extends SvgGraphComponent implements OnChanges, 
     @Output() rendered = new EventEmitter<any>();
     @Output() updated = new EventEmitter<any>();
 
-    @ViewChild('container') element: ElementRef;
+    @ViewChild('container', {static: true}) element: ElementRef;
 
     xScale: any;
     yScale: any;

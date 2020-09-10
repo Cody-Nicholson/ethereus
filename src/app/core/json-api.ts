@@ -1,5 +1,4 @@
 
-import {Response, URLSearchParams, RequestOptionsArgs} from '@angular/http';
 import { throwError } from 'rxjs';
 
 export class HttpJsonService {
@@ -36,12 +35,6 @@ export class HttpJsonService {
             urlParams.set(key, params[key]);
         }
         return urlParams;
-    }
-
-    protected getRequestOptions(params: any): RequestOptionsArgs {
-        return {
-            search: this.buildSearchParams(params),
-        }
     }
 
 }

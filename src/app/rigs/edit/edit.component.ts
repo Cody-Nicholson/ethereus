@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { FormArray } from '@angular/forms/src/model';
 import { RigService, Rig } from '../rig.service';
 
 @Component({

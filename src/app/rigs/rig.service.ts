@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpJsonService } from '../core/json-api';
 import { environment } from '../../environments/environment';
-import { Http } from '@angular/http';
 import { ReplaySubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

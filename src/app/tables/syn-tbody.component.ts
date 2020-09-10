@@ -24,7 +24,7 @@ export class SynTableBodyComponent {
     trackByFn: TrackByFunction<any>;
     rows: Array<any> = [];
 
-    @ContentChild(TemplateRef) rowTemplate: TemplateRef<Object>;
+    @ContentChild(TemplateRef, {static: true}) rowTemplate: TemplateRef<Object>;
 
     constructor(table: SynTableComponent) {
         this.trackByFn = table.trackBy;

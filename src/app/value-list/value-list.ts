@@ -27,7 +27,7 @@ export class SynValueListComponent implements ControlValueAccessor {
 
     @Input() placeholder: string = '';
 
-    @ViewChild('addInput') addInput: ElementRef;
+    @ViewChild('addInput', {static: true}) addInput: ElementRef;
 
     @Input() set validators(validators: ValidatorFn | ValidatorFn[]) {
         this.inputControl.setValidators(validators);
