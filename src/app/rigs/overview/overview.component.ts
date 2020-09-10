@@ -54,6 +54,7 @@ export class RigRow implements Rig {
   ver: string;
   uptime: number;
   totalEthHash: number;
+  gpus: string[];
 
   constructor(rig: Rig, data: ClaymoreData) {
     Object.assign(this, rig);

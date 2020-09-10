@@ -1,8 +1,9 @@
-import {ElementRef, HostListener} from '@angular/core';
+import { ElementRef, HostListener, Directive } from '@angular/core';
 import {select} from 'd3-selection';
 import 'd3-transition';
 
 
+@Directive()
 export abstract class SvgGraphComponent {
 
     host: any;

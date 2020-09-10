@@ -37,7 +37,7 @@ export class RigsComponent implements OnInit {
   }
 
   get gpus() {
-    return this.form.get('gpus');
+    return this.form.get('gpus') as FormGroup;
   }
 
   selectRig(rig: Rig) {
@@ -60,7 +60,7 @@ export class RigsComponent implements OnInit {
       })
   }
 
-  onSubmit(rig: Rig) {
+  onSubmit() {
     this.rigService.put(this.form.value)
       .subscribe(z => {
         console.log(z);
