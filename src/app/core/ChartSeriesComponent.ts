@@ -2,8 +2,10 @@ import { AreaChartData } from "./chart-api";
 import { TimedSeriesItem, ClaymoreService } from "../claymore/claymore.service";
 import { Subscription ,  Observable, timer } from "rxjs";
 import { switchMap } from 'rxjs/operators';
+import { Directive } from "@angular/core";
 
 
+@Directive()
 export abstract class ChartSeriesComponent {
 
     areaData: AreaChartData;
