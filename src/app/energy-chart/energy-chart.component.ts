@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AreaDemoConfig } from './area-config';
-import { Observable } from 'rxjs/Observable';
-import { mergeMap } from 'rxjs/operators/mergeMap';
+import { Observable } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 import { EnergyService } from './energy-chart.service';
 import { ClaymoreService } from '../claymore/claymore.service';
 import { Input } from '@angular/core';

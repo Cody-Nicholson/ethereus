@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  Subscription } from 'rxjs';
 import { ClaymoreService } from '../claymore.service';
-import { Subscription } from 'rxjs/Subscription';
 import { Input } from '@angular/core';
 import { AreaChartData } from '../../core/chart-api';
 import { DualHashChartConfig } from './chart-config';

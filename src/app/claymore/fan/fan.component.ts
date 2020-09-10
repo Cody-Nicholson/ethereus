@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { ClaymoreService, ClaymoreData } from '../claymore.service';
-import { Subscription } from 'rxjs/Subscription';
-import { AreaChartData, GraphPoint } from '../../core/chart-api';
 import { ChartSeriesComponent } from '../../core/ChartSeriesComponent';
 import { RigService } from '../../rigs/rig.service';
 import { ActivatedRoute } from '@angular/router';

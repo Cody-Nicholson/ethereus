@@ -1,12 +1,11 @@
 import { HttpJsonService } from "../core/json-api";
 import { Http } from "@angular/http";
-import { Observable } from "rxjs/Observable";
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
-import { mergeMap } from "rxjs/operators/mergeMap";
+import { Observable } from "rxjs";
+import { mergeMap ,  map, catchError } from "rxjs/operators";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
 import { TimedSeriesItem } from "../claymore/claymore.service";
-import { map, catchError } from "rxjs/operators";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class EnergyService extends HttpJsonService{
@@ -15,31 +14,19 @@ export class EnergyService extends HttpJsonService{
         return `${environment.ethereusApi}`;
     }
     
-    constructor(protected http: Http) {
+    constructor(protected http: HttpClient) {
         super();
     }
     
     get(): Observable<any> {
-        return this.http.get(`${this.baseApi}/energy`)
-        .pipe(
-            map(this.extractData),
-            catchError(this.handleError),
-        )
+        return this.http.get(`${this.baseApi}/energy`);
     }
 
     getPowerSeries(ip: string, alias: string = '1H'): Observable<TimedSeriesItem[][]> {
-        return this.http.get(`${this.baseApi}/energy/power/${ip}/${alias}`)
-        .pipe(
-            map(this.extractData),
-            catchError(this.handleError),
-        )
+        return this.http.get<TimedSeriesItem[][]>(`${this.baseApi}/energy/power/${ip}/${alias}`)
     }
 
     getTimedPowerSeries(ip: string, alias: string = '1H'): Observable<TimedSeriesItem[][]> {
-        return this.http.get(`${this.baseApi}/energy/power/${ip}/${alias}/timed`)
-        .pipe(
-            map(this.extractData),
-            catchError(this.handleError),
-        )
+        return this.http.get<TimedSeriesItem[][]>(`${this.baseApi}/energy/power/${ip}/${alias}/timed`)
     }
 }

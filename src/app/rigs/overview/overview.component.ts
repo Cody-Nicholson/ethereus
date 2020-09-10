@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RigService, Rig } from '../rig.service';
 import { ClaymoreService, ClaymoreData } from '../../claymore/claymore.service';
-import { Observable } from 'rxjs/Observable';
-import { forkJoin } from 'rxjs/observable/forkJoin';
-import { sum } from 'lodash';
+import { Observable ,  forkJoin } from 'rxjs';
+import { sum, map } from 'lodash';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'rigs-overview',
@@ -21,12 +21,12 @@ export class RigsOverviewComponent implements OnInit {
   ngOnInit() {
 
     this.rigService.getAll()
-      .flatMap(rigs => {
+      .pipe(switchMap(rigs => {
         this.rigs = rigs;
         return forkJoin(rigs.map(rig => {
           return this.clayService.getSnapshot(rig.ip);
         }))
-      })
+      }))
       .subscribe(clayData => {
         this.rows = clayData.map((data, i) => {
           return new RigRow(this.rigs[i], data);

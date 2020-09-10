@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  Subscription } from 'rxjs';
 import { ClaymoreService, ClaymoreData } from '../claymore.service';
-import { Subscription } from 'rxjs/Subscription';
 import { Input } from '@angular/core';
 import { AreaChartData, GraphPoint } from '../../core/chart-api';
 import { ChartSeriesComponent } from '../../core/ChartSeriesComponent';
 import { RigService } from '../../rigs/rig.service';
 import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'dual-hash',
@@ -29,9 +29,9 @@ export class DualHashComponent extends ChartSeriesComponent implements OnInit {
 
   query() {
     return this.claymore.getDualTimedSeries(this.route.snapshot.parent.params.ip, this.alias)
-      .map(timedSeries => {
-        return this.mapHashScale(timedSeries)
-      })
+    .pipe(map(timedSeries => {
+      return this.mapHashScale(timedSeries)
+    }));
   }
 
   mapHashScale(timedSeries) {

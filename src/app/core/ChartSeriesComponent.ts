@@ -1,7 +1,7 @@
 import { AreaChartData } from "./chart-api";
 import { TimedSeriesItem, ClaymoreService } from "../claymore/claymore.service";
-import { Subscription } from "rxjs/Subscription";
-import { Observable } from "rxjs/Observable";
+import { Subscription ,  Observable, timer } from "rxjs";
+import { switchMap } from 'rxjs/operators';
 
 
 export abstract class ChartSeriesComponent {
@@ -43,10 +43,9 @@ export abstract class ChartSeriesComponent {
     }
 
     startPoll() {
-        this.poll = Observable.timer(0, 5000)
-            .mergeMap(i => {
+        this.poll = timer(0, 5000).pipe(switchMap(i => {
                 return this.query()
-            })
+            }))
             .subscribe((data) => {
                 this.setData(data);
             })

@@ -1,11 +1,9 @@
-import { AsyncLocalStorage } from 'angular-async-local-storage';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { HttpJsonService } from '../core/json-api';
 import { environment } from '../../environments/environment';
 import { Http } from '@angular/http';
-import { Subject } from 'rxjs/Subject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ReplaySubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 export interface Rig {
     ip: string;
@@ -17,7 +15,7 @@ export class RigService extends HttpJsonService {
 
     private selected = new ReplaySubject<any>(1);
 
-    constructor(protected http: Http) {
+    constructor(protected http: HttpClient) {
         super();
         let ip = localStorage.getItem('rigIp');
         if(!ip){
@@ -44,28 +42,20 @@ export class RigService extends HttpJsonService {
         return `${environment.rigApi}/rigs`;
     }
 
-    get(ip: string) {
-        return this.http.get(`${this.baseApi}/${ip}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+    get(ip: string): Observable<Rig> {
+        return this.http.get<Rig>(`${this.baseApi}/${ip}`);
     }
 
     getAll(): Observable<Rig[]> {
-        return this.http.get(`${this.baseApi}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+        return this.http.get(`${this.baseApi}`) as any;
     }
 
     put(rig: Rig) {
-        return this.http.put(`${this.baseApi}/${rig.ip}`, rig)
-            .map(this.extractData)
-            .catch(this.handleError);
+        return this.http.put(`${this.baseApi}/${rig.ip}`, rig);
     }
 
     delete(rig: Rig) {
-        return this.http.delete(`${this.baseApi}/${rig.ip}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+        return this.http.delete(`${this.baseApi}/${rig.ip}`);
     }
 
 }

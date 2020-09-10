@@ -1,18 +1,16 @@
 import { HttpJsonService } from "../core/json-api";
-import { Http } from "@angular/http";
-import { Observable } from "rxjs/Observable";
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
-import { mergeMap } from "rxjs/operators/mergeMap";
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
 import { flatten, mean, minBy, maxBy, meanBy, sumBy } from 'lodash';
 import { AreaChartData } from "../core/chart-api";
 import { timestamp, map, catchError, pluck } from "rxjs/operators";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class ClaymoreService extends HttpJsonService {
 
-    constructor(protected http: Http) {
+    constructor(protected http: HttpClient) {
         super();
     }
 
@@ -22,19 +20,11 @@ export class ClaymoreService extends HttpJsonService {
 
     getAll(ip: string = ' ', alias: string = '10M'): Observable<ClaymoreData[]> {
         console.log('Get All', this.baseApi)
-        return this.http.get(`${this.baseApi}/stats/${ip}/${alias}`)
-            .pipe(
-                map(this.extractData),
-                catchError(this.handleError),
-            )
+        return this.http.get<ClaymoreData[]>(`${this.baseApi}/stats/${ip}/${alias}`)
     }
 
     getSnapshot(ip: string): Observable<ClaymoreData> {
-        return this.http.get(`${this.baseApi}/snapshot/${ip}`)
-            .pipe(
-                map(this.extractData),
-                catchError(this.handleError),
-            )
+        return this.http.get<ClaymoreData>(`${this.baseApi}/snapshot/${ip}`);
     }
 
     getEthHarshrates(ip: string): Observable<number[]> {
@@ -52,65 +42,35 @@ export class ClaymoreService extends HttpJsonService {
     }
 
     getFanSeries(ip: string = ' ', alias: string = '1H'): Observable<number[][]> {
-        return this.http.get(`${this.baseApi}/fans/${ip}/${alias}`)
-            .pipe(
-                map(this.extractData),
-                catchError(this.handleError),
-            )
+        return this.http.get(`${this.baseApi}/fans/${ip}/${alias}`) as any;
     }
 
     getFanTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
-        return this.http.get(`${this.baseApi}/fans/${ip}/${alias}/timed`)
-            .map(this.extractData)
-            .catch(this.handleError);
+        return this.http.get(`${this.baseApi}/fans/${ip}/${alias}/timed`) as any
     }
 
     getEthTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
-        return this.http.get(`${this.baseApi}/eth/${ip}/${alias}/timed`)
-            .pipe(
-                map(this.extractData),
-                catchError(this.handleError),
-            )
+        return this.http.get(`${this.baseApi}/eth/${ip}/${alias}/timed`) as any
     }
 
     getDualTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
-        return this.http.get(`${this.baseApi}/dual/${ip}/${alias}/timed`)
-            .pipe(
-                map(this.extractData),
-                catchError(this.handleError),
-            )
+        return this.http.get<TimedSeriesItem[][]>(`${this.baseApi}/dual/${ip}/${alias}/timed`)
     }
 
     getTemperatureTimedSeries(ip: string = ' ', alias: string = '1H'): Observable<TimedSeriesItem[][]> {
-        return this.http.get(`${this.baseApi}/temps/${ip}/${alias}/timed`)
-            .pipe(
-                map(this.extractData),
-                catchError(this.handleError),
-            )
+        return this.http.get<TimedSeriesItem[][]>(`${this.baseApi}/temps/${ip}/${alias}/timed`)
     }
 
     getTemperatureSeries(ip: string = ' ', alias: string = '1H'): Observable<number[][]> {
-        return this.http.get(`${this.baseApi}/temps/${ip}/${alias}`)
-            .pipe(
-                map(this.extractData),
-                catchError(this.handleError),
-            )
+        return this.http.get<number[][]>(`${this.baseApi}/temps/${ip}/${alias}`)
     }
 
     getEthereumHashrateSeries(ip: string = ' ', alias: string = '1H'): Observable<number[][]> {
-        return this.http.get(`${this.baseApi}/eth/${ip}/${alias}`)
-            .pipe(
-                map(this.extractData),
-                catchError(this.handleError),
-            )
+        return this.http.get<number[][]>(`${this.baseApi}/eth/${ip}/${alias}`)
     }
 
     getDualHashrateSeries(ip: string = ' ', alias: string = '1H'): Observable<number[][]> {
-        return this.http.get(`${this.baseApi}/duel/${ip}/${alias}`)
-            .pipe(
-                map(this.extractData),
-                catchError(this.handleError),
-            )
+        return this.http.get<number[][]>(`${this.baseApi}/duel/${ip}/${alias}`)
     }
 
     static getHashPoints(alias: string, series: number[][]) {

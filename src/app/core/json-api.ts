@@ -1,6 +1,6 @@
 
 import {Response, URLSearchParams, RequestOptionsArgs} from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+import { throwError } from 'rxjs';
 
 export class HttpJsonService {
 
@@ -27,7 +27,7 @@ export class HttpJsonService {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
 
-        return Observable.throw(errMsg);
+        return throwError(errMsg);
     }
 
     protected buildSearchParams(params: {}) {

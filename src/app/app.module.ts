@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { EnergyChartComponent } from './energy-chart/energy-chart.component';
 import { CommonModule } from '@angular/common';
 import { EnergyService } from './energy-chart/energy-chart.service';
-import { HttpModule } from '@angular/http';
 import { HeaderComponent } from './core/header/header.component';
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +19,6 @@ import { FanComponent } from './claymore/fan/fan.component';
 import { FanChartComponent } from './claymore/fan/fan-chart.component';
 import { AreaGraphModule } from './area/area-graph.module';
 import { EnergyComponent } from './energy-chart/energy.component';
-import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 import { SynValueListComponent } from './value-list/value-list';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RigsComponent } from './rigs/edit/edit.component';
@@ -34,17 +32,17 @@ import { RigsOverviewComponent } from './rigs/overview/overview.component';
 import { TableModule } from './tables/table.module';
 import { ParallelBarsModule } from './parallel-bars/parallel-bars.module';
 import { ClaySettingsComponent } from './clay-settings/clay-settings.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
     AreaGraphModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule,
     AppRoutingModule,
     KpiCellModule,
-    AsyncLocalStorageModule,
     ReactiveFormsModule,
     FormsModule,
     TableModule,
